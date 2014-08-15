@@ -11,29 +11,30 @@
   </section>
 
   <section>
-    <article class="four-wide shift-four">
+    <article class="four-wide shift-four" id="registration-container">
 
+      <div id="registration-form">
+        <%= form_for @user, url: sessions_path do |f| %>
 
-      <%= form_for @user, url: sessions_path do |f| %>
+          <%= f.label :first_name, "First Name" %>
+          <%= f.text_field :first_name %>
 
-        <%= f.label :first_name, "First Name" %>
-        <%= f.text_field :first_name %>
+          <%= f.label :last_name, "Last Name" %>
+          <%= f.text_field :last_name %>
 
-        <%= f.label :last_name, "Last Name" %>
-        <%= f.text_field :last_name %>
+          <%= f.label :email %>
+          <%= f.email_field :email %>
 
-        <%= f.label :email %>
-        <%= f.email_field :email %>
+          <%= f.label :password %>
+          <%= f.password_field :password %>
 
-        <%= f.label :password %>
-        <%= f.password_field :password %>
+          <%= f.label :password_confirm, "Confirm Password" %>
+          <%= f.password_field :password_confirm %>
 
-        <%= f.label :password_confirm, "Confirm Password" %>
-        <%= f.password_field :password_confirm %>
+          <%= f.submit "Sign Up" %>
 
-        <%= f.submit "Sign Up" %>
-
-      <% end %>
+          <% end %>
+      </div>
     </article>
   </section>
 
@@ -48,7 +49,7 @@
   <section>
     <article class="two-wide shift-five">
       <div class="signed-up shift-two">
-        <%= link_to "Sign In", sessions_path, :class => "link-button" %>
+        <%= link_to "Sign In", new_session_path, class: "link-button", id: "sign-in-button", remote: true %>
       </div>
     </article>
   </section>
