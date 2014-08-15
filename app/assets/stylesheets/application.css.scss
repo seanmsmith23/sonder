@@ -126,6 +126,7 @@
 }
 
 .link-button {
-  @include button();
+  @include button;
+  text-align: center;
 }
 
