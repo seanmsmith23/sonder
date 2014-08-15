@@ -1,0 +1,56 @@
+<div class="full-width">
+
+  <section>
+    <article class="eight-wide shift-two">
+      <div class="login-header">
+        <h1>Sonder</h1>
+
+        <h3>A community for remembering the ones we've lost</h3>
+      </div>
+    </article>
+  </section>
+
+  <section>
+    <article class="four-wide shift-four">
+
+
+      <%= form_for @user, url: sessions_path do |f| %>
+
+        <%= f.label :first_name, "First Name" %>
+        <%= f.text_field :first_name %>
+
+        <%= f.label :last_name, "Last Name" %>
+        <%= f.text_field :last_name %>
+
+        <%= f.label :email %>
+        <%= f.email_field :email %>
+
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+
+        <%= f.label :password_confirm %>
+        <%= f.password_field :password_confirm %>
+
+        <%= f.submit %>
+
+      <% end %>
+    </article>
+  </section>
+
+  <section>
+    <article class="two-wide shift-five">
+      <div class="signed-up">
+        <h8>Already signed up?</h8>
+      </div>
+    </article>
+  </section>
+
+  <section>
+    <article class="two-wide shift-five">
+      <div class="signed-up">
+        <%= link_to "Sign In", url: sessions_path, class: "link-button" %>
+      </div>
+    </article>
+  </section>
+
+</div>

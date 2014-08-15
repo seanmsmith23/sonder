@@ -1,3 +1,131 @@
 @import 'bourbon';
 @import 'neat';
 @import 'base/base';
+@import 'sessions';
+
+// defining standard widths
+
+.full-width {
+  @include outer-container;
+}
+
+.one-wide {
+  @include span-columns(1);
+}
+
+.two-wide {
+  @include span-columns(2);
+}
+
+.three-wide {
+  @include span-columns(3);
+}
+
+.four-wide {
+  @include span-columns(4);
+}
+
+.five-wide {
+  @include span-columns(5);
+}
+
+.six-wide {
+  @include span-columns(6);
+}
+
+.seven-wide {
+  @include span-columns(7);
+}
+
+.eight-wide {
+  @include span-columns(8);
+}
+
+.nine-wide {
+  @include span-columns(9);
+}
+
+.ten-wide {
+  @include span-columns(10);
+}
+
+.eleven-wide {
+  @include span-columns(11);
+}
+
+// defining standard heights
+
+.quarter-height {
+  height: 25vw;
+}
+
+.one-third-height {
+  height: 33vw;
+}
+
+.half-height {
+  height: 50vw;
+}
+
+.two-third-height {
+  height: 66vw;
+}
+
+.three-quarter-height {
+  height: 75vw;
+}
+
+.full-height {
+  height: 100vw;
+}
+
+// defining shifts
+
+.shift-one {
+  @include shift(1);
+}
+
+.shift-two {
+  @include shift(2);
+}
+
+.shift-three {
+  @include shift(3);
+}
+
+.shift-four {
+  @include shift(4);
+}
+
+.shift-five {
+  @include shift(5);
+}
+
+.shift-six {
+  @include shift(6);
+}
+
+.shift-seven {
+  @include shift(7);
+}
+
+.shift-eight {
+  @include shift(8);
+}
+
+.shift-nine {
+  @include shift(9);
+}
+
+.shift-ten {
+  @include shift(10);
+}
+
+.shift-eleven {
+  @include shift(11);
+}
+
+.link-button {
+  @include button();
+}
+
