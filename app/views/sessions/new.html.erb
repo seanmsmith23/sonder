@@ -38,18 +38,18 @@
     </article>
   </section>
 
-  <section>
-    <article class="two-wide shift-five">
-      <div class="signed-up">
+  <section >
+    <article class="two-wide shift-five" id="options-container">
+      <div class="signed-up center-text" id="signed-up">
         <h8>Already signed up?</h8>
       </div>
     </article>
   </section>
 
   <section>
-    <article class="two-wide shift-five">
-      <div class="signed-up shift-two">
-        <%= link_to "Sign In", new_session_path, class: "link-button", id: "sign-in-button", remote: true %>
+    <article class="two-wide shift-five signed-up">
+      <div class="shift-three">
+        <%= link_to "Sign In", new_session_path, id: "sign-in-button", remote: true %>
       </div>
     </article>
   </section>

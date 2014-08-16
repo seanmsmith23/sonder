@@ -1,6 +1,5 @@
 $('#sign-in-button').hide();
 $('#registration-form').hide();
-
-// not working
-$('#registation-container').append('<%= j render "form" %>');
+$('<%= j render "form" %>').appendTo('#registration-container');
+$('#signed-up').hide();
 
