@@ -14,10 +14,22 @@
     <article class="four-wide shift-four" id="registration-container">
 
       <div id="registration-form">
+
+        <% if @user.errors.any? %>
+          <div>
+            <ul>
+              <% @user.errors.full_messages.each do |message| %>
+                <li class="error-msg"><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
         <%= form_for @user, url: sessions_path do |f| %>
 
           <%= f.label :first_name, "First Name" %>
           <%= f.text_field :first_name %>
+
 
           <%= f.label :last_name, "Last Name" %>
           <%= f.text_field :last_name %>
@@ -35,6 +47,7 @@
 
           <% end %>
       </div>
+
     </article>
   </section>
 
@@ -48,8 +61,8 @@
 
   <section>
     <article class="two-wide shift-five signed-up">
-      <div class="shift-three">
-        <%= link_to "Sign In", new_session_path, id: "sign-in-button", remote: true %>
+      <div class="shift-two">
+        <%= link_to "Sign In", new_session_path, class: "link-button", id: "sign-in-button", remote: true %>
       </div>
     </article>
   </section>

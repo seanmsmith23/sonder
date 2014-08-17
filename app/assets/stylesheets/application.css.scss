@@ -134,3 +134,16 @@
   text-align: center;
 }
 
+.field_with_errors {
+
+  input {
+    display: block;
+    border: 2px solid red;
+  }
+
+}
+
+.error-msg {
+  color: red;
+}
+
