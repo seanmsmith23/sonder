@@ -1,4 +1,5 @@
 require 'rails_helper'
+require_relative '../helper_methods'
 
 feature "Welcome" do
   scenario 'User should see a registration form and a button for signin' do
@@ -13,6 +14,18 @@ feature "Welcome" do
     expect(page).to have_content("Confirm Password")
     expect(page).to have_button("Sign Up")
     expect(page).to have_content("Already signed up?")
-    expect(page).to have_button("Sign In")
+    expect(page).to have_link("Sign In")
+  end
+
+  scenario 'User should be able to register' do
+    register_user
+
+    expect(page).to have_content("Thanks for registering!")
+  end
+
+  scenario 'User should be able to signin' do
+    register_and_signin
+
+    expect(page).to have_content("stuff will go here")
   end
 end
