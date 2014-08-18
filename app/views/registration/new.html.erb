@@ -1,0 +1,69 @@
+<div class="full-width">
+
+  <section>
+    <article class="eight-wide shift-two">
+      <div class="login-header">
+        <h1>Sonder</h1>
+
+        <h3>A community for remembering the ones we've lost</h3>
+      </div>
+    </article>
+  </section>
+
+  <section>
+    <article class="four-wide shift-four" id="registration-container">
+
+      <div id="registration-form">
+
+        <% if @user.errors.any? %>
+          <div>
+            <ul>
+              <% @user.errors.full_messages.each do |message| %>
+                <li class="error-msg"><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <%= form_for @user, url: registration_index_path do |f| %>
+
+          <%= f.label :first_name, "First Name" %>
+          <%= f.text_field :first_name %>
+
+          <%= f.label :last_name, "Last Name" %>
+          <%= f.text_field :last_name %>
+
+          <%= f.label :email %>
+          <%= f.email_field :email %>
+
+          <%= f.label :password %>
+          <%= f.password_field :password %>
+
+          <%= f.label :password_confirm, "Confirm Password" %>
+          <%= f.password_field :password_confirm %>
+
+          <%= f.submit "Sign Up", id: "sign-up-button" %>
+
+        <% end %>
+      </div>
+
+    </article>
+  </section>
+
+  <section >
+    <article class="two-wide shift-five" id="options-container">
+      <div class="signed-up center-text" id="signed-up">
+        <h8>Already signed up?</h8>
+      </div>
+    </article>
+  </section>
+
+  <section>
+    <article class="two-wide shift-five signed-up">
+      <div class="shift-four">
+        <%= link_to "Sign In", new_session_path %>
+      </div>
+    </article>
+  </section>
+
+</div>

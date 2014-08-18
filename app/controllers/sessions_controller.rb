@@ -1,21 +1,25 @@
 class SessionsController < ApplicationController
+  skip_before_filter :ensure_authenticated_user
+
   def new
     @user = User.new
   end
 
   def create
+    @user = User.find_by(email: params[:user][:email])
 
-    @user = User.create(
-                        first_name: params[:user][:first_name],
-                        last_name: params[:user][:last_name],
-                        email: params[:user][:email],
-                        password: params[:user][:password],
-                        password_confirmation: params[:user][:password_confirm] )
-    if @user.valid?
-      @user.save
-      redirect_to 'new.js.erb'
+    if @user && @user.authenticate(params[:user][:password])
+      session[:user_id] = @user.id
+      redirect_to root_path
     else
-      render 'new'
+      @user = User.new(email: params[:user][:email])
+      @user.errors[:base] << "Username / password is invalid"
+      render :new
     end
+  end
+
+  def destroy
+    session[:user_id] = nil
+    redirect_to root_path
   end
 end

@@ -147,3 +147,7 @@
   color: red;
 }
 
+.flash-success {
+  @include flash($success-color)
+}
+

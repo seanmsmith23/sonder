@@ -17,7 +17,7 @@ gem 'bourbon'
 gem 'neat'
 gem 'bitters'
 
-# gem 'spring',        group: :development
+gem 'spring',        group: :development
 
 gem 'bcrypt', '~> 3.1.7'
 gem 'debugger', group: [:development, :test]
