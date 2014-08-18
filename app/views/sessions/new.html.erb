@@ -13,6 +13,24 @@
   <section>
     <article class="four-wide shift-four" id="registration-container">
 
+      <div id="sign-in-form">
+        <%= form_for @user, url: sessions_path do |f| %>
+          <%= f.label :email %>
+          <%= f.email_field :email %>
+
+          <%= f.label :password %>
+          <%= f.password_field :password %>
+          <%= f.submit "Sign In" %>
+        <% end %>
+
+        <div class="signed-up shift-three">
+          <h8>Haven't registered yet?</h8>
+        </div>
+        <div class="signed-up shift-four">
+          <button id="register-button">Register</button>
+        </div>
+      </div>
+
       <div id="registration-form">
 
         <% if @user.errors.any? %>
@@ -25,11 +43,10 @@
           </div>
         <% end %>
 
-        <%= form_for @user, url: sessions_path do |f| %>
+        <%= form_for @user, url: sessions_path, remote: true, :authenticity_token => true do |f| %>
 
           <%= f.label :first_name, "First Name" %>
           <%= f.text_field :first_name %>
-
 
           <%= f.label :last_name, "Last Name" %>
           <%= f.text_field :last_name %>
@@ -62,7 +79,7 @@
   <section>
     <article class="two-wide shift-five signed-up">
       <div class="shift-two">
-        <%= link_to "Sign In", new_session_path, class: "link-button", id: "sign-in-button", remote: true %>
+        <button id="sign-in-button">Sign In</button>
       </div>
     </article>
   </section>
