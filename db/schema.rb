@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140815210435) do
+ActiveRecord::Schema.define(version: 20140818224940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "memorials", force: true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.date     "born"
+    t.date     "died"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "first_name"
