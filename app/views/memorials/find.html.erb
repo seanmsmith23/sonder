@@ -1,0 +1,13 @@
+<div class="full-width">
+  <% if @memorials %>
+    <% @memorials.each do |memorial| %>
+      <section>
+        <div class="all-memorial-container six-wide shift-three cntr-txt">
+          <p class="memorial-name-index">
+            <%= link_to "#{memorial.name}", memorial_path(id: memorial.id) %>
+          </p>
+        </div>
+      </section>
+    <% end %>
+  <% end %>
+</div>

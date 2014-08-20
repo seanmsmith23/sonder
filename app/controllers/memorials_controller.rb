@@ -24,4 +24,8 @@ class MemorialsController < ApplicationController
 
   end
 
+  def find
+    @memorials = Memorial.all
+  end
+
 end
