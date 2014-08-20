@@ -1,4 +1,5 @@
 class MemorialsController < ApplicationController
+
   def new
     @memorial = Memorial.new
   end
@@ -13,15 +14,11 @@ class MemorialsController < ApplicationController
 
     @memorial = Memorial.new(name: params[:memorial][:name], born: born, died: died, user_id: current_user.id)
 
-    p '*'*80
-    p "CURRENT USER: #{current_user.id}"
-
     if @memorial.save
       redirect_to root_path
     else
       render 'new'
     end
-
   end
 
   def find

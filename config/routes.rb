@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   root "memorials#index"
 
   get "memorial/find", to: "memorials#find", as: :find_memorial
+  post "memorial/join", to: "memorials#join", as: :join_memorial
 
 end
