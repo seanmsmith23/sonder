@@ -1,0 +1,5 @@
+<p>You haven't joined this memorial yet</p>
+<p><%= @memorial.name %></p>
+<p><%= @memorial.born %> - <%= @memorial.died %></p>
+
+<%= button_to "Join", {controller: 'memberships', action: 'create', memorial_id: @memorial.id }, method: :post %>

@@ -1,11 +1,11 @@
 class MemorialsController < ApplicationController
 
-  def new
-    @memorial = Memorial.new
-  end
-
   def index
     @memorials = Memorial.where(user_id: current_user.id)
+  end
+
+  def new
+    @memorial = Memorial.new
   end
 
   def create
@@ -21,8 +21,29 @@ class MemorialsController < ApplicationController
     end
   end
 
+  def show
+    check_user_membership(params[:id], current_user.id)
+    @memorial = Memorial.find(params[:id])
+  end
+
+  def update
+
+  end
+
+  def destroy
+
+  end
+
   def find
     @memorials = Memorial.all
+  end
+
+  ## helper methods
+
+  def check_user_membership(memorial_id, user_id)
+    unless Memorial.find(memorial_id).users.find_by_id(user_id)
+      redirect_to new_memorial_membership_path(memorial_id: memorial_id)
+    end
   end
 
 end
