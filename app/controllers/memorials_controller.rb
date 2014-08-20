@@ -24,6 +24,7 @@ class MemorialsController < ApplicationController
   def show
     check_user_membership(params[:id], current_user.id)
     @memorial = Memorial.find(params[:id])
+    @comment = Comment.new
   end
 
   def update
