@@ -1,0 +1,19 @@
+<div class="full-width">
+  <h1>Create a Memorial</h1>
+  <section>
+    <article>
+      <%= form_for @memorial, url: memorials_path do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+
+        <%= f.label :born, "Date of Birth (mm/dd/yyyy)" %>
+        <%= f.text_field :born, class: "datepicker" %>
+
+        <%= f.label :died, "Date of Death (mm/dd/yyyy)" %>
+        <%= f.text_field :died, class: "datepicker" %>
+
+        <%= f.submit "Create Memorial" %>
+      <% end %>
+    </article>
+  </section>
+</div>

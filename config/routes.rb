@@ -5,4 +5,6 @@ Rails.application.routes.draw do
 
   root "memorials#index"
 
+  get "memorials/find", as: :find_memorial
+
 end

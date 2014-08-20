@@ -2,6 +2,8 @@
 @import 'neat';
 @import 'base/base';
 @import 'sessions';
+@import 'registration';
+@import 'memorials';
 
 // defining standard widths
 
@@ -130,7 +132,7 @@
   text-align: center;
 }
 
-.center-text {
+.cntr-txt {
   text-align: center;
 }
 
@@ -150,4 +152,10 @@
 .flash-success {
   @include flash($success-color)
 }
+
+.auto-margin {
+  margin: auto;
+}
+
+
 

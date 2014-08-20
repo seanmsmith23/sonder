@@ -14,8 +14,7 @@ class RegistrationController < ApplicationController
       password_confirmation: params[:user][:password_confirm]
     )
 
-    if @user.valid?
-      @user.save
+    if @user.save
       redirect_to '/sessions/new', notice: "Thanks for registering!"
     else
       render 'new'

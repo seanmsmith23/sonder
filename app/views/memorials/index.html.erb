@@ -1,3 +1,30 @@
-<p>stuff will go here</p>
+<div class="full-width">
+  <section>
 
-<%= link_to %>
+    <div class="four-wide">
+      <%= link_to "Create Memorial", new_memorial_path, class: "link-panel shift-four" %>
+    </div>
+
+    <div class="four-wide">
+      <%= link_to "Find Memorial", memorials_path, class: "link-panel shift-four" %>
+    </div>
+
+    <div class="four-wide">
+      <%= link_to "Your Memorials", memorials_path, class: "link-panel shift-four" %>
+    </div>
+
+  </section>
+
+    <% if @memorials %>
+      <% @memorials.each do |memorial| %>
+        <section>
+          <div class="all-memorial-container six-wide shift-three cntr-txt">
+            <p class="memorial-name-index">
+              <%= link_to "#{memorial.name}", memorial_path(id: memorial.id) %>
+            </p>
+          </div>
+        </section>
+      <% end %>
+    <% end %>
+
+</div>
