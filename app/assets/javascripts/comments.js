@@ -3,6 +3,7 @@ $(document).ready(function(){
   var maxLength = 500;
   var $charCount = $('#comment-char-count');
   var $addCommentButton = $('#add-comment-button');
+  var $favoriteButton = $('.comment-favorite');
 
   $charCount.html(maxLength);
 
@@ -20,6 +21,12 @@ $(document).ready(function(){
       $addCommentButton.removeAttr("disabled");
     }
 
+  });
+
+  $favoriteButton.click(function(){
+    var $likeCount = $(this).parents('.card').find('.like-count');
+    var likes = parseInt( $likeCount.html() );
+    $likeCount.html(likes + 1);
   });
 
 });

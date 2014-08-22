@@ -29,6 +29,11 @@
   @include pad(2vw 0 0 0);
 }
 
+.comment-favorite {
+  height: 1.2em;
+  width: 1.2em;
+}
+
 //CARD REFILL BEGINNING
 
 .card-column-one {
@@ -150,7 +155,7 @@
       span {
         color: $base-font-color;
         font-size: .7em;
-        display: block;
+//        display: block;
         font-weight: normal;
       }
     }
