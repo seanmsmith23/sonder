@@ -15,3 +15,11 @@
   margin-top: 5vw;
 }
 
+.over-limit {
+  color: red;
+}
+
+.comment-input {
+  height: 10vw;
+  @include span-columns(6);
+}
