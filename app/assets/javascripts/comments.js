@@ -23,10 +23,12 @@ $(document).ready(function(){
 
   });
 
-  $favoriteButton.click(function(){
+  $favoriteButton.bind('click', function(e){
+    e.preventDefault();
     var $likeCount = $(this).parents('.card').find('.like-count');
     var likes = parseInt( $likeCount.html() );
     $likeCount.html(likes + 1);
+    $(this).unbind('click');
   });
 
 });
