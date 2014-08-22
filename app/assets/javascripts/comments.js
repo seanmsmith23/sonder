@@ -39,12 +39,7 @@ $(document).ready(function(){
       type: "POST",
       url: "/likes",
       data: {id: likeData},
-      success: function(){
-
-      },
-      error: function(){
-        alert('failure')
-      }
+      success: function(){}
     });
   });
 
