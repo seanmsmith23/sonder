@@ -19,15 +19,15 @@
       <% @comments.each_with_index do |comment, index| %>
         <% if index % 3 == 0 %>
           <script>
-            $('.card-column-one').append("<%= j render partial: 'comment', locals: {comment_text: comment.comment, name: comment.user.name } %>");
+            $('.card-column-one').append("<%= j render partial: 'comment', locals: {comment_text: comment.comment, name: comment.user.name, comment_id: comment.id } %>");
           </script>
         <% elsif index % 3 == 1 %>
           <script>
-            $('.card-column-two').append("<%= j render partial: 'comment', locals: {comment_text: comment.comment, name: comment.user.name } %>");
+            $('.card-column-two').append("<%= j render partial: 'comment', locals: {comment_text: comment.comment, name: comment.user.name, comment_id: comment.id } %>");
           </script>
         <% elsif index % 3 == 2 %>
           <script>
-            $('.card-column-three').append("<%= j render partial: 'comment', locals: {comment_text: comment.comment, name: comment.user.name } %>");
+            $('.card-column-three').append("<%= j render partial: 'comment', locals: {comment_text: comment.comment, name: comment.user.name, comment_id: comment.id } %>");
           </script>
         <% end %>
       <% end %>

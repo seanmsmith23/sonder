@@ -25,10 +25,27 @@ $(document).ready(function(){
 
   $favoriteButton.bind('click', function(e){
     e.preventDefault();
+
     var $likeCount = $(this).parents('.card').find('.like-count');
     var likes = parseInt( $likeCount.html() );
+
     $likeCount.html(likes + 1);
-    $(this).unbind('click');
+
+    $(this).prop("disabled", true);
+
+    var likeData = $(this).parents('.card').attr('data-id');
+
+    $.ajax({
+      type: "POST",
+      url: "/likes",
+      data: {id: likeData},
+      success: function(){
+
+      },
+      error: function(){
+        alert('failure')
+      }
+    });
   });
 
 });
