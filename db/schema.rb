@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20140822192213) do
   create_table "likes", force: true do |t|
     t.integer "comment_id"
     t.integer "user_id"
+    t.integer "memorial_id"
   end
 
   create_table "memberships", force: true do |t|

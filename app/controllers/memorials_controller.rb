@@ -26,6 +26,7 @@ class MemorialsController < ApplicationController
     @memorial = Memorial.find(params[:id])
     @comments = Comment.where(memorial_id: params[:id])
     @comment = Comment.new
+    @likes = Like.where(memorial_id: params[:id])
   end
 
   def update

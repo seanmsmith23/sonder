@@ -23,22 +23,37 @@ $(document).ready(function(){
 
   });
 
+  $('.card').each(function(){
+    if ( $(this).find('#liked').size() > 0 ){
+      $(this).find('.comment-favorite').hide();
+    } else {
+      $(this).find('.comment-favorite').show();
+      $(this).find('#unlike').hide();
+    }
+  });
+
   $favoriteButton.bind('click', function(e){
     e.preventDefault();
 
     var $likeCount = $(this).parents('.card').find('.like-count');
     var likes = parseInt( $likeCount.html() );
-
     $likeCount.html(likes + 1);
+
+    $(this).parents('li').find('#unlike').show();
+    $(this).parents('li').find('.comment-favorite').hide();
 
     $(this).prop("disabled", true);
 
-    var likeData = $(this).parents('.card').attr('data-id');
+    var commentID = $(this).parents('.card').attr('data-id');
+    var memorialID = $(this).parents('.card').attr('data-memorial-id');
 
     $.ajax({
       type: "POST",
       url: "/likes",
-      data: {id: likeData},
+      data: {
+        id: commentID,
+        memorial_id: memorialID
+      },
       success: function(){}
     });
   });
