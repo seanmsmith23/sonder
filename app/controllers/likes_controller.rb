@@ -9,4 +9,10 @@ class LikesController < ApplicationController
       render nothing: true
     end
   end
+
+  def destroy
+    like = Like.where(user_id: current_user.id, comment_id: params[:id])
+    like.destroy_all
+    render nothing: true
+  end
 end

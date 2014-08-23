@@ -15,7 +15,9 @@
       <% else %>
         <li>
       <% end %>
-          <span id="unlike">Unlike</span>
+          <%= form_tag do %>
+            <%= image_submit_tag("heart-plus-icon-red.png", class: "unlike") %>
+          <% end %>
           <%= form_tag do %>
             <%= image_submit_tag("heart-plus-icon.png", class: "comment-favorite") %>
           <% end %>

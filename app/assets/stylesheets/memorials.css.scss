@@ -30,8 +30,13 @@
 }
 
 .comment-favorite {
-  height: 1.2em;
-  width: 1.2em;
+  height: 1em;
+  width: 1em;
+}
+
+.unlike {
+  height: 1em;
+  width: 1em;
 }
 
 //CARD REFILL BEGINNING
@@ -113,11 +118,11 @@
       display: inline;
       color: $card-stats-color;
       font-weight: 800;
-      font-size: 1.2em;
+      font-size: 1em;
       float: left;
       border-right: 1px solid transparentize($base-font-color, .8);
-      line-height: 1.1em;
-      padding: 0 .7em 0 .7em;
+      line-height: 0.9em;
+      padding: 0 .5em 0 .5em;
 
       &:first-child {
         padding-left: 0;
@@ -131,7 +136,7 @@
         color: $medium-gray;
         font-size: .7em;
 //        display: block;
-        font-weight: normal;
+        font-weight: light;
         &:hover {
           color: $dark-gray;
         }
