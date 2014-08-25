@@ -1,4 +1,4 @@
-<div class="card" data-id="<%= comment_id %>" data-memorial-id="<%= memorial_id %>">
+<div class="card" data-id="<%= comment_id %>" data-memorial-id="<%= memorial_id %>" data-like-count="<%= likes.count %>">
   <!--<div class="card-image">-->
     <!--<img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png" alt="">-->
   <!--</div>-->
@@ -22,7 +22,7 @@
             <%= image_submit_tag("heart-plus-icon.png", class: "comment-favorite") %>
           <% end %>
         </li>
-      <li class="like-count"><%= likes.count %></li>
+        <li class="like-count" data-likes="<%= likes.count %>"><%= likes.count %></li>
     </ul>
   </div>
 </div>

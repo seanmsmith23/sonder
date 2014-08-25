@@ -31,6 +31,10 @@ $(document).ready(function(){
       $(this).find('.comment-favorite').show();
       $(this).find('.unlike').hide();
     }
+
+    if ( $(this).find('.like-count').attr('data-likes') == "0" ){
+      $(this).find('.like-count').remove();
+    }
   });
 
   $favoriteButton.bind('click', function(e){
@@ -55,6 +59,13 @@ $(document).ready(function(){
       },
       success: function(){}
     });
+
+    if ( $(this).parents('.card').attr('data-like-count') == "0" ){
+      $(this).parents('ul').append($('<li></li>').html('1').addClass('like-count'));
+      $(this).parents('.card').attr('data-like-count','1');
+
+    }
+
   });
 
   $deleteFavorite.bind('click', function(e){
@@ -75,6 +86,12 @@ $(document).ready(function(){
       url: "/likes/" + commentID,
       success: function(){}
     });
+
+    if ( $(this).parents('.card').attr('data-like-count') == "1" ){
+      $(this).parents('.card').find('.like-count').remove();
+      $(this).parents('.card').attr('data-like-count','0');
+    }
+
   });
 
 });
