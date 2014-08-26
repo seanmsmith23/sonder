@@ -12,43 +12,47 @@
     <%= f.submit "Add Comment", id: "add-comment-button" %>
   <% end %>
 
-  <div class="memorial-content">
-    <div class="card-column-one"></div>
-    <div class="card-column-two"></div>
-    <div class="card-column-three"></div>
+  <% if @comments %>
+
+    <div class="memorial-content">
+      <div class="card-column-one"></div>
+      <div class="card-column-two"></div>
+      <div class="card-column-three"></div>
       <% @comments.each_with_index do |comment, index| %>
         <% if index % 3 == 0 %>
           <script>
-            $('.card-column-one').append("<%= j render partial: 'comment', locals: {
-                comment_text: comment.comment,
-                name: comment.user.name,
-                comment_id: comment.id,
-                memorial_id: @memorial.id,
-                likes: @likes.where(comment_id: comment.id)
-              } %>");
+            $('.card-column-one').append("<%= j render partial: 'memorials/comment', locals: {
+                  comment_text: comment.comment,
+                  name: comment.user.name,
+                  comment_id: comment.id,
+                  memorial_id: @memorial.id,
+                  likes: @likes.where(comment_id: comment.id)
+                } %>");
           </script>
         <% elsif index % 3 == 1 %>
           <script>
-            $('.card-column-two').append("<%= j render partial: 'comment', locals: {
-                comment_text: comment.comment,
-                name: comment.user.name,
-                comment_id: comment.id,
-                memorial_id: @memorial.id,
-                likes: @likes.where(comment_id: comment.id)
-              } %>");
+            $('.card-column-two').append("<%= j render partial: 'memorials/comment', locals: {
+                  comment_text: comment.comment,
+                  name: comment.user.name,
+                  comment_id: comment.id,
+                  memorial_id: @memorial.id,
+                  likes: @likes.where(comment_id: comment.id)
+                } %>");
           </script>
         <% elsif index % 3 == 2 %>
           <script>
-            $('.card-column-three').append("<%= j render partial: 'comment', locals: {
-                comment_text: comment.comment,
-                name: comment.user.name,
-                comment_id: comment.id,
-                memorial_id: @memorial.id,
-                likes: @likes.where(comment_id: comment.id)
-              } %>");
+            $('.card-column-three').append("<%= j render partial: 'memorials/comment', locals: {
+                  comment_text: comment.comment,
+                  name: comment.user.name,
+                  comment_id: comment.id,
+                  memorial_id: @memorial.id,
+                  likes: @likes.where(comment_id: comment.id)
+                } %>");
           </script>
         <% end %>
       <% end %>
-  </div>
+    </div>
+
+  <% end %>
 
 </div>

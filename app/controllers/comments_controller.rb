@@ -5,6 +5,8 @@ class CommentsController < ApplicationController
       redirect_to memorial_path(id: params[:memorial_id])
     else
       @memorial = Memorial.find(params[:memorial_id])
+      @comments = Comment.all
+      @likes = Like.all
       render 'memorials/show'
     end
   end
