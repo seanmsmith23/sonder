@@ -15,14 +15,14 @@
       <% else %>
         <li>
       <% end %>
-          <%= form_tag do %>
-            <%= image_submit_tag("heart-plus-icon-red.png", class: "unlike") %>
-          <% end %>
-          <%= form_tag do %>
-            <%= image_submit_tag("heart-plus-icon.png", class: "comment-favorite") %>
-          <% end %>
-        </li>
-        <li class="like-count" data-likes="<%= likes.count %>"><%= likes.count %></li>
+      <%= form_tag do %>
+        <%= image_submit_tag("heart-plus-icon-red.png", class: "unlike") %>
+      <% end %>
+      <%= form_tag do %>
+        <%= image_submit_tag("heart-plus-icon.png", class: "comment-favorite") %>
+      <% end %>
+      </li>
+      <li class="like-count" data-likes="<%= likes.count %>"><%= likes.count %></li>
     </ul>
   </div>
 </div>
