@@ -26,6 +26,8 @@ feature "Welcome" do
   scenario 'User should be able to signin' do
     register_and_signin
 
-    expect(page).to have_content("stuff will go here")
+    expect(page).to have_content("Create Memorial")
+    expect(page).to have_content("Find Memorial")
+    expect(page).to have_content("Your Memorials")
   end
 end

@@ -11,6 +11,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'rspec-rails'
 gem 'capybara'
 gem 'pg'
+gem 'selenium-webdriver'
 
 gem 'bourbon'
 gem 'neat'

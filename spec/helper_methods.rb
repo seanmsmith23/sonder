@@ -21,3 +21,10 @@ def register_and_signin(name="hotfeet@hotmail.com")
   register_user(name)
   signin_user(name)
 end
+
+def create_memorial(name="Abe Lincoln", born="12/12/1900", died="05/12/1932")
+  fill_in "memorial[name]", with: name
+  fill_in "memorial[born]", with: born
+  fill_in "memorial[died]", with: died
+  click_button("Create Memorial")
+end
