@@ -87,7 +87,7 @@ $(document).ready(function(){
       success: function(){}
     });
 
-    if ( $(this).parents('.card').attr('data-like-count') == "1" ){
+    if ( $(this).parents('.card').attr('data-like-count') == "0" ){
       $(this).parents('.card').find('.like-count').remove();
       $(this).parents('.card').attr('data-like-count','0');
     }
