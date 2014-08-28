@@ -28,3 +28,24 @@ def create_memorial(name="Abe Lincoln", born="12/12/1900", died="05/12/1932")
   fill_in "memorial[died]", with: died
   click_button("Create Memorial")
 end
+
+def signout
+  visit '/signout'
+end
+
+def create_user_and_memorial
+  register_and_signin
+  click_link "Create Memorial"
+  create_memorial
+  click_link("Abe Lincoln")
+  click_button("Join")
+end
+
+def new_comment(text)
+  fill_in "comment[comment]", with: text
+  click_button("Add Comment")
+end
+
+def comment_length
+  500
+end

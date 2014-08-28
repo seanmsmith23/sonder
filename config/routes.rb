@@ -12,4 +12,6 @@ Rails.application.routes.draw do
 
   resources :likes, only: [:create, :destroy]
 
+  get "/signout" => "sessions#destroy"
+
 end
