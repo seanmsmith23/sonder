@@ -113,7 +113,6 @@ $(document).ready(function(){
       $(this).parents('.card').find('.like-count').remove();
       $(this).parents('.card').attr('data-like-count','0');
     }
-
   });
 
 });

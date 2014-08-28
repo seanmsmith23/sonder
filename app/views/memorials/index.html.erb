@@ -1,19 +1,6 @@
 <div class="full-width">
-  <section>
 
-    <div class="four-wide">
-      <%= link_to "Create Memorial", new_memorial_path, class: "link-panel shift-four" %>
-    </div>
-
-    <div class="four-wide">
-      <%= link_to "Find Memorial", find_memorials_path , class: "link-panel shift-four" %>
-    </div>
-
-    <div class="four-wide">
-      <%= link_to "Your Memorials", memorials_path, class: "link-panel shift-four" %>
-    </div>
-
-  </section>
+    <%= render "header" %>
 
     <% if @memorials %>
       <% @memorials.each do |memorial| %>
