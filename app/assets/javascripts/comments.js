@@ -48,6 +48,20 @@ $(document).ready(function(){
     }
   };
 
+  var checkForLikes = function(element){
+    if ( element.find('#liked').size() > 0 ){
+      element.find('.comment-favorite').hide();
+    } else {
+      element.find('.comment-favorite').show();
+      element.find('.unlike').hide();
+    }
+
+    if ( element.find('.like-count').attr('data-likes') == "0" ){
+      element.find('.like-count').remove();
+    }
+  };
+
+
   var maxCommentLength = 500;
   var addCommentButton = $('#add-comment-button');
   var $favoriteButton = $('.comment-favorite');
@@ -62,16 +76,7 @@ $(document).ready(function(){
   });
 
   $('.card').each(function(){
-    if ( $(this).find('#liked').size() > 0 ){
-      $(this).find('.comment-favorite').hide();
-    } else {
-      $(this).find('.comment-favorite').show();
-      $(this).find('.unlike').hide();
-    }
-
-    if ( $(this).find('.like-count').attr('data-likes') == "0" ){
-      $(this).find('.like-count').remove();
-    }
+    checkForLikes($(this));
   });
 
   $favoriteButton.bind('click', function(e){
@@ -100,11 +105,9 @@ $(document).ready(function(){
     $(this).parents('li').find('.comment-favorite').show();
 
     var commentID = $(this).parents('.card').attr('data-id');
-    var memorialID = $(this).parents('.card').attr('data-memorial-id');
 
     deleteLike(commentID);
     changeLikeCount($(this), "DOWN");
-
 
     if ( $(this).parents('.card').find('.like-count').html() == "0" ){
       $(this).parents('.card').find('.like-count').remove();
