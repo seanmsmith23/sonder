@@ -1,27 +1,64 @@
 $(document).ready(function(){
 
-  var maxLength = 500;
-  var $charCount = $('#comment-char-count');
-  var $addCommentButton = $('#add-comment-button');
-  var $favoriteButton = $('.comment-favorite');
-  var $deleteFavorite = $('.unlike');
+//  Manipulating Data
 
-  $charCount.html(maxLength);
+  var postLike = function(commentID, memorialID){
+    $.ajax({
+      type: "POST",
+      url: "/likes",
+      data: {
+        id: commentID,
+        memorial_id: memorialID
+      }
+    });
+  };
 
-  $('#add-comment-input').bind('keyup', function(){
+  var deleteLike = function(commentID){
+    $.ajax({
+      type: "DELETE",
+      url: "/likes/" + commentID
+    });
+  };
 
-    var charsTyped = $(this).val().length;
-    $charCount.html(maxLength - charsTyped);
+//  User interaction
+
+//  Changing the DOM
+
+  var checkCharCount = function(clicked, maxLength, charCountDOM, button){
+    charsTyped = clicked.val().length;
+    charCountDOM.html(maxLength - charsTyped);
 
     if (charsTyped > maxLength){
-      $charCount.addClass('over-limit');
-      $addCommentButton.prop("disabled", true);
+      charCountDOM.addClass('over-limit');
+      button.prop("disabled", true);
+    } else {
+      charCountDOM.removeClass('over-limit');
+      button.removeAttr("disabled");
     }
-    else {
-      $charCount.removeClass('over-limit');
-      $addCommentButton.removeAttr("disabled");
-    }
+  };
 
+  var changeLikeCount = function(clicked, upOrDown){
+    var likeCount = clicked.parents('.card').find('.like-count');
+    var likes = parseInt( likeCount.html() );
+    if (upOrDown == "UP"){
+      likeCount.html(likes + 1);
+    }
+    else if (upOrDown == "DOWN") {
+      likeCount.html(likes - 1);
+    }
+  };
+
+  var maxCommentLength = 500;
+  var addCommentButton = $('#add-comment-button');
+  var $favoriteButton = $('.comment-favorite');
+  var $deleteFavorite = $('.unlike');
+  var charCount = $('#comment-char-count');
+  var addCommentInput = $('#add-comment-input');
+
+  charCount.html(maxCommentLength);
+
+  addCommentInput.bind('keyup', function(){
+      checkCharCount($(this), maxCommentLength, charCount, addCommentButton);
   });
 
   $('.card').each(function(){
@@ -40,30 +77,18 @@ $(document).ready(function(){
   $favoriteButton.bind('click', function(e){
     e.preventDefault();
 
-    var $likeCount = $(this).parents('.card').find('.like-count');
-    var likes = parseInt( $likeCount.html() );
-    $likeCount.html(likes + 1);
-
     $(this).parents('li').find('.unlike').show();
     $(this).parents('li').find('.comment-favorite').hide();
 
     var commentID = $(this).parents('.card').attr('data-id');
     var memorialID = $(this).parents('.card').attr('data-memorial-id');
 
-    $.ajax({
-      type: "POST",
-      url: "/likes",
-      data: {
-        id: commentID,
-        memorial_id: memorialID
-      },
-      success: function(){}
-    });
+    postLike(commentID, memorialID);
+    changeLikeCount($(this), "UP");
 
     if ( $(this).parents('.card').attr('data-like-count') == "0" ){
       $(this).parents('ul').append($('<li></li>').html('1').addClass('like-count'));
       $(this).parents('.card').attr('data-like-count','1');
-
     }
 
   });
@@ -71,23 +96,17 @@ $(document).ready(function(){
   $deleteFavorite.bind('click', function(e){
     e.preventDefault();
 
-    var $likeCount = $(this).parents('.card').find('.like-count');
-    var likes = parseInt( $likeCount.html() );
-    $likeCount.html(likes - 1);
-
     $(this).parents('li').find('.unlike').hide();
     $(this).parents('li').find('.comment-favorite').show();
 
     var commentID = $(this).parents('.card').attr('data-id');
     var memorialID = $(this).parents('.card').attr('data-memorial-id');
 
-    $.ajax({
-      type: "DELETE",
-      url: "/likes/" + commentID,
-      success: function(){}
-    });
+    deleteLike(commentID);
+    changeLikeCount($(this), "DOWN");
 
-    if ( $(this).parents('.card').attr('data-like-count') == "0" ){
+
+    if ( $(this).parents('.card').find('.like-count').html() == "0" ){
       $(this).parents('.card').find('.like-count').remove();
       $(this).parents('.card').attr('data-like-count','0');
     }
