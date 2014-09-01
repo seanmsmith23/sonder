@@ -27,6 +27,8 @@
 
 .memorial-content {
   @include pad(2vw 0 0 0);
+  @include position (absolute, 100% 0 0 0);
+  width: 100%;
 }
 
 .comment-favorite {
@@ -39,8 +41,14 @@
   width: 1em;
 }
 
-//CARD REFILL BEGINNING
+.memorial-cover-photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 
-
-
-// CARD REFILL ENDING
+#add-comment-form {
+  margin-bottom: 2vw;
+}

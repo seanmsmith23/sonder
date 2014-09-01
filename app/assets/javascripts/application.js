@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require images-loaded
+//= require jquery-imagefill.js
 
 $(document).ready(function(){
   $(function() {
