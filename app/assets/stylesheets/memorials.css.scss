@@ -26,8 +26,8 @@
 }
 
 .memorial-content {
-  @include pad(2vw 0 0 0);
-  @include position (absolute, 100% 0 0 0);
+  @include pad(55% 0 0 0);
+//  @include position (absolute, 100% 0 0 0);
   width: 100%;
 }
 
@@ -49,6 +49,13 @@
   height: 100%;
 }
 
-#add-comment-form {
+.new_comment {
   margin-bottom: 2vw;
+}
+
+.memorial-name-dates {
+  position: absolute;
+  top: 70%;
+  color: white;
+  width: 100%;
 }

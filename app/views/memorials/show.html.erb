@@ -2,54 +2,59 @@
   <%= image_tag "mountain.jpg" %>
 </div>
 
-<div class="memorial-content">
-  <div class="cntr-txt">
-    <h1>Remembering <%= @memorial.name %></h1>
+<div class="memorial-name-dates cntr-txt">
+  <h1>Remembering <%= @memorial.name %></h1>
 
-    <h3><%= @memorial.born %> - <%= @memorial.died %></h3>
-  </div>
+  <h3><%= @memorial.born %> - <%= @memorial.died %></h3>
+</div>
 
-  <%= form_for @comment, url: memorial_comments_path(memorial_id: @memorial.id), id: "add-comment-form" do |f| %>
-    <%= f.label :comment %>
-    <%= f.text_field :comment, class: "comment-input", id: "add-comment-input" %>
-    <p id="comment-char-count"></p>
-    <%= f.submit "Add Comment", id: "add-comment-button" %>
-  <% end %>
+<div class="full-width">
+  <div class="memorial-content">
 
-  <div class="card-column-one"></div>
-  <div class="card-column-two"></div>
-  <div class="card-column-three"></div>
-  <% @comments.each_with_index do |comment, index| %>
-    <% if index % 3 == 0 %>
-      <script>
-        $('.card-column-one').append("<%= j render partial: 'comment', locals: {
-                comment_text: comment.comment,
-                name: comment.user.name,
-                comment_id: comment.id,
-                memorial_id: @memorial.id,
-                likes: @likes.where(comment_id: comment.id)
-              } %>");
-      </script>
-    <% elsif index % 3 == 1 %>
-      <script>
-        $('.card-column-two').append("<%= j render partial: 'comment', locals: {
-                comment_text: comment.comment,
-                name: comment.user.name,
-                comment_id: comment.id,
-                memorial_id: @memorial.id,
-                likes: @likes.where(comment_id: comment.id)
-              } %>");
-      </script>
-    <% elsif index % 3 == 2 %>
-      <script>
-        $('.card-column-three').append("<%= j render partial: 'comment', locals: {
-                comment_text: comment.comment,
-                name: comment.user.name,
-                comment_id: comment.id,
-                memorial_id: @memorial.id,
-                likes: @likes.where(comment_id: comment.id)
-              } %>");
-      </script>
+
+    <%= form_for @comment, url: memorial_comments_path(memorial_id: @memorial.id), id: "add-comment-form" do |f| %>
+      <%= f.label :comment %>
+      <%= f.text_field :comment, class: "comment-input", id: "add-comment-input" %>
+      <p id="comment-char-count"></p>
+      <%= f.submit "Add Comment", id: "add-comment-button" %>
     <% end %>
-  <% end %>
+
+    <div class="card-column-one"></div>
+    <div class="card-column-two"></div>
+    <div class="card-column-three"></div>
+
+    <% @comments.each_with_index do |comment, index| %>
+      <% if index % 3 == 0 %>
+        <script>
+          $('.card-column-one').append("<%= j render partial: 'comment', locals: {
+                comment_text: comment.comment,
+                name: comment.user.name,
+                comment_id: comment.id,
+                memorial_id: @memorial.id,
+                likes: @likes.where(comment_id: comment.id)
+              } %>");
+        </script>
+      <% elsif index % 3 == 1 %>
+        <script>
+          $('.card-column-two').append("<%= j render partial: 'comment', locals: {
+                comment_text: comment.comment,
+                name: comment.user.name,
+                comment_id: comment.id,
+                memorial_id: @memorial.id,
+                likes: @likes.where(comment_id: comment.id)
+              } %>");
+        </script>
+      <% elsif index % 3 == 2 %>
+        <script>
+          $('.card-column-three').append("<%= j render partial: 'comment', locals: {
+                comment_text: comment.comment,
+                name: comment.user.name,
+                comment_id: comment.id,
+                memorial_id: @memorial.id,
+                likes: @likes.where(comment_id: comment.id)
+              } %>");
+        </script>
+      <% end %>
+    <% end %>
+  </div>
 </div>
