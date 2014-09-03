@@ -2,10 +2,13 @@ $(document).ready(function(){
   var coverPhoto = $('.memorial-cover-photo');
   coverPhoto.imagefill();
 
-  $('.new_story').hide();
+  var newStoryForm = $('.new_story');
+  var newStoryButton = $('#new-story-button');
 
-  $('#new-story-button').click(function(){
-    $('.new_story').show();
+  newStoryForm.hide();
+
+  newStoryButton.click(function(){
+    newStoryForm.toggle();
   });
 
 });
