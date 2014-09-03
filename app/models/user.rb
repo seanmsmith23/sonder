@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 
   has_many :memberships
   has_many :memorials, through: :memberships
-  has_many :comments
+  has_many :stories
 
   validates :first_name, :last_name, presence: true
   validates :email, presence: true, uniqueness: {case_sensitive: false}

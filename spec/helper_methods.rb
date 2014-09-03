@@ -41,11 +41,12 @@ def create_user_and_memorial
   click_button("Join")
 end
 
-def new_comment(text)
-  fill_in "comment[comment]", with: text
-  click_button("Add Comment")
+def new_story(text)
+  click_button("+ Story")
+  fill_in "story[story]", with: text
+  click_button("Add Story")
 end
 
-def comment_length
+def story_length
   500
 end

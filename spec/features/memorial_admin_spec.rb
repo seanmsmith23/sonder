@@ -31,7 +31,9 @@ feature "Create a Memorial" do
     click_button("Join")
 
     expect(page).to have_content("Remembering Abe Lincoln")
-    expect(page).to have_button("Add Comment")
+    expect(page).to have_button("+ Story")
+    click_button("+ Story")
+    expect(page).to have_button("Add Story")
     expect(page).to have_content("500")
   end
 end

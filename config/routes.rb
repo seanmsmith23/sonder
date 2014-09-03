@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :memorials do
     get "find", on: :collection
     resources :memberships, only: [:new, :create]
-    resources :comments, only: [:create]
+    resources :stories, only: [:create]
   end
 
   resources :likes, only: [:create, :destroy]

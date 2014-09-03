@@ -19,19 +19,19 @@
   color: red;
 }
 
-.comment-input {
+.story-input {
   height: 10vw;
   vertical-align: top;
   @include span-columns(6);
 }
 
 .memorial-content {
-  @include pad(55% 0 0 0);
+  @include pad(70% 0 0 0);
 //  @include position (absolute, 100% 0 0 0);
-  width: 100%;
+//  @include outer-container;
 }
 
-.comment-favorite {
+.story-favorite {
   height: 1em;
   width: 1em;
 }
@@ -47,9 +47,13 @@
   left: 0;
   width: 100%;
   height: 100%;
+  @include background-image(url('mountain.jpg'));
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: top;
 }
 
-.new_comment {
+.new_story {
   margin-bottom: 2vw;
 }
 
@@ -59,3 +63,10 @@
   color: white;
   width: 100%;
 }
+
+.test {
+  position: absolute;
+  top: 100%;
+}
+
+

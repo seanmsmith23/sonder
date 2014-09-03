@@ -24,8 +24,8 @@ class MemorialsController < ApplicationController
   def show
     check_user_membership(params[:id], current_user.id)
     @memorial = Memorial.find(params[:id])
-    @comments = Comment.where(memorial_id: params[:id])
-    @comment = Comment.new
+    @stories = Story.where(memorial_id: params[:id])
+    @story = Story.new
     @likes = Like.where(memorial_id: params[:id])
   end
 

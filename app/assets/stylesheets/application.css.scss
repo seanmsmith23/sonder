@@ -5,9 +5,13 @@
 @import 'registration';
 @import 'memorials';
 @import 'header';
-@import 'comments';
+@import 'stories';
 
 // defining standard widths
+
+.row {
+  @include row();
+}
 
 .full-width {
   @include outer-container;

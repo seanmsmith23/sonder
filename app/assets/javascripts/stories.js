@@ -2,21 +2,21 @@ $(document).ready(function(){
 
 //  Manipulating Data
 
-  var postLike = function(commentID, memorialID){
+  var postLike = function(storyID, memorialID){
     $.ajax({
       type: "POST",
       url: "/likes",
       data: {
-        id: commentID,
+        id: storyID,
         memorial_id: memorialID
       }
     });
   };
 
-  var deleteLike = function(commentID){
+  var deleteLike = function(storyID){
     $.ajax({
       type: "DELETE",
-      url: "/likes/" + commentID
+      url: "/likes/" + storyID
     });
   };
 
@@ -50,9 +50,9 @@ $(document).ready(function(){
 
   var checkForLikes = function(element){
     if ( element.find('#liked').size() > 0 ){
-      element.find('.comment-favorite').hide();
+      element.find('.story-favorite').hide();
     } else {
-      element.find('.comment-favorite').show();
+      element.find('.story-favorite').show();
       element.find('.unlike').hide();
     }
 
@@ -62,17 +62,17 @@ $(document).ready(function(){
   };
 
 
-  var maxCommentLength = 500;
-  var addCommentButton = $('#add-comment-button');
-  var $favoriteButton = $('.comment-favorite');
+  var maxStoryLength = 500;
+  var addStoryButton = $('#add-story-button');
+  var $favoriteButton = $('.story-favorite');
   var $deleteFavorite = $('.unlike');
-  var charCount = $('#comment-char-count');
-  var addCommentInput = $('#add-comment-input');
+  var charCount = $('#story-char-count');
+  var addStoryInput = $('#add-story-input');
 
-  charCount.html(maxCommentLength);
+  charCount.html(maxStoryLength);
 
-  addCommentInput.bind('keyup', function(){
-      checkCharCount($(this), maxCommentLength, charCount, addCommentButton);
+  addStoryInput.bind('keyup', function(){
+      checkCharCount($(this), maxStoryLength, charCount, addStoryButton);
   });
 
   $('.card').each(function(){
@@ -83,12 +83,12 @@ $(document).ready(function(){
     e.preventDefault();
 
     $(this).parents('li').find('.unlike').show();
-    $(this).parents('li').find('.comment-favorite').hide();
+    $(this).parents('li').find('.story-favorite').hide();
 
-    var commentID = $(this).parents('.card').attr('data-id');
+    var storyID = $(this).parents('.card').attr('data-id');
     var memorialID = $(this).parents('.card').attr('data-memorial-id');
 
-    postLike(commentID, memorialID);
+    postLike(storyID, memorialID);
     changeLikeCount($(this), "UP");
 
     if ( $(this).parents('.card').attr('data-like-count') == "0" ){
@@ -102,11 +102,11 @@ $(document).ready(function(){
     e.preventDefault();
 
     $(this).parents('li').find('.unlike').hide();
-    $(this).parents('li').find('.comment-favorite').show();
+    $(this).parents('li').find('.story-favorite').show();
 
-    var commentID = $(this).parents('.card').attr('data-id');
+    var storyID = $(this).parents('.card').attr('data-id');
 
-    deleteLike(commentID);
+    deleteLike(storyID);
     changeLikeCount($(this), "DOWN");
 
     if ( $(this).parents('.card').find('.like-count').html() == "0" ){

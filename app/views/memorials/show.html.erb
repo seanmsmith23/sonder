@@ -1,57 +1,62 @@
-<div class="memorial-cover-photo">
-  <%= image_tag "mountain.jpg" %>
-</div>
+<div class="row">
+  <div class="memorial-cover-photo">
+  </div>
 
-<div class="memorial-name-dates cntr-txt">
-  <h1>Remembering <%= @memorial.name %></h1>
+  <div class="memorial-name-dates cntr-txt">
+    <h1>Remembering <%= @memorial.name %></h1>
 
-  <h3><%= @memorial.born %> - <%= @memorial.died %></h3>
+    <h3><%= @memorial.born %> - <%= @memorial.died %></h3>
+  </div>
 </div>
 
 <div class="full-width">
   <div class="memorial-content">
+    <div style="display: inline-block">
+      <button id="new-story-button">+ Story</button>
+      <button>+ Post</button>
+      <button>+ Photo</button>
+    </div>
 
-
-    <%= form_for @comment, url: memorial_comments_path(memorial_id: @memorial.id), id: "add-comment-form" do |f| %>
-      <%= f.label :comment %>
-      <%= f.text_field :comment, class: "comment-input", id: "add-comment-input" %>
-      <p id="comment-char-count"></p>
-      <%= f.submit "Add Comment", id: "add-comment-button" %>
+    <%= form_for @story, url: memorial_stories_path(memorial_id: @memorial.id), id: "add-story-form" do |f| %>
+      <%= f.label :story %>
+      <%= f.text_field :story, class: "story-input", id: "add-story-input" %>
+      <p id="story-char-count"></p>
+      <%= f.submit "Add Story", id: "add-story-button" %>
     <% end %>
 
     <div class="card-column-one"></div>
     <div class="card-column-two"></div>
     <div class="card-column-three"></div>
 
-    <% @comments.each_with_index do |comment, index| %>
+    <% @stories.each_with_index do |story, index| %>
       <% if index % 3 == 0 %>
         <script>
-          $('.card-column-one').append("<%= j render partial: 'comment', locals: {
-                comment_text: comment.comment,
-                name: comment.user.name,
-                comment_id: comment.id,
+          $('.card-column-one').append("<%= j render partial: 'story', locals: {
+                story_text: story.story,
+                name: story.user.name,
+                story_id: story.id,
                 memorial_id: @memorial.id,
-                likes: @likes.where(comment_id: comment.id)
+                likes: @likes.where(story_id: story.id)
               } %>");
         </script>
       <% elsif index % 3 == 1 %>
         <script>
-          $('.card-column-two').append("<%= j render partial: 'comment', locals: {
-                comment_text: comment.comment,
-                name: comment.user.name,
-                comment_id: comment.id,
+          $('.card-column-two').append("<%= j render partial: 'story', locals: {
+                story_text: story.story,
+                name: story.user.name,
+                story_id: story.id,
                 memorial_id: @memorial.id,
-                likes: @likes.where(comment_id: comment.id)
+                likes: @likes.where(story_id: story.id)
               } %>");
         </script>
       <% elsif index % 3 == 2 %>
         <script>
-          $('.card-column-three').append("<%= j render partial: 'comment', locals: {
-                comment_text: comment.comment,
-                name: comment.user.name,
-                comment_id: comment.id,
+          $('.card-column-three').append("<%= j render partial: 'story', locals: {
+                story_text: story.story,
+                name: story.user.name,
+                story_id: story.id,
                 memorial_id: @memorial.id,
-                likes: @likes.where(comment_id: comment.id)
+                likes: @likes.where(story_id: story.id)
               } %>");
         </script>
       <% end %>
