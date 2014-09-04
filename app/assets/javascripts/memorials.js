@@ -20,15 +20,30 @@ $(document).ready(function(){
     hide.hide();
   };
 
-  var postAndImage =  newPostForm.add();
-  var storyAndImage = newStoryForm.add();
+  var buttonClickedColor = function(button){
+    button.toggleClass('clicked-button');
+  };
+
+  var clearButtonColor = function(buttons){
+    buttons.removeClass('clicked-button');
+  };
+
+  var postAndImageForms =  newPostForm.add();
+  var storyAndImageForms = newStoryForm.add();
+
+  var postAndImageButtons = newPostButton.add();
+  var storyAndImageButtons = newStoryButton.add();
 
   newStoryButton.click(function(){
-    hideAndShow(newStoryForm, postAndImage);
+    clearButtonColor(postAndImageButtons);
+    hideAndShow(newStoryForm, postAndImageForms);
+    buttonClickedColor(newStoryButton);
   });
 
   newPostButton.click(function(){
-    hideAndShow(newPostForm, storyAndImage);
+    clearButtonColor(storyAndImageButtons);
+    hideAndShow(newPostForm, storyAndImageForms);
+    buttonClickedColor(newPostButton);
   });
 
 });
