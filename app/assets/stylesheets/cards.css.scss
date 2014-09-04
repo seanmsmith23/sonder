@@ -62,16 +62,16 @@
   }
 
   .card-copy {
-    padding: $base-line-height/2 $gutter/2;
+    padding: $base-line-height/2 $gutter/2 $base-line-height/4 $gutter/2;
     font-size: .9em;
     line-height: 1.5em;
     p {
-      margin: 0;
+//      margin: 0;
     }
   }
 
   .card-stats {
-    padding: $base-line-height/2 $gutter/2;
+    padding: 0 $base-line-height/2 $gutter/2;
     overflow: auto;
 
     ul li {
