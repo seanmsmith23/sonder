@@ -42,7 +42,7 @@ def create_user_and_memorial
 end
 
 def new_story(text)
-  click_button("+ Story")
+  click_button("Story")
   fill_in "story[story]", with: text
   click_button("Add Story")
 end

@@ -6,9 +6,9 @@ feature "Story" do
   scenario "User can add a story", js: true do
     create_user_and_memorial
 
-    expect(page).to have_button("+ Story")
+    expect(page).to have_button("Story")
 
-    click_button("+ Story")
+    click_button("Story")
     fill_in "story[story]", with: "Good ol' Abe. So honest all of the time."
     click_button("Add Story")
 
@@ -18,7 +18,7 @@ feature "Story" do
   scenario "Story counter should decrement with each character", js: true do
     create_user_and_memorial
 
-    click_button("+ Story")
+    click_button("Story")
 
     fill_in "story[story]", with: 'a' * 3
     expect(page).to have_content(story_length - 3)
@@ -33,7 +33,7 @@ feature "Story" do
   scenario "Story cannot be longer than #{story_length} characters, button should disable", js: true do
     create_user_and_memorial
 
-    click_button("+ Story")
+    click_button("Story")
     fill_in "story[story]", with: 'a' * (story_length + 1)
 
     expect(page).to have_content("-1")

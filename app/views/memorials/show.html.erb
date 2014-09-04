@@ -3,9 +3,14 @@
   </div>
 
   <div class="memorial-name-dates cntr-txt">
-    <h1><span class="da-name">Remembering <%= @memorial.name %></span></h1>
-
-    <h3><%= @memorial.born.strftime("%b %M, %Y")  %> - <%= @memorial.died.strftime("%b %M, %Y") %></h3>
+    <p>
+      <span id="name">
+        <%= @memorial.name %><br>
+      </span>
+      <span id="dates">
+        <%= @memorial.born.strftime("%b %l, %Y ")  %> - <%= @memorial.died.strftime("%b %l, %Y ") %>
+      </span>
+    </p>
   </div>
 </div>
 
@@ -14,21 +19,17 @@
 
     <div class="memorial-content-buttons">
       <ul>
-        <li>
-          <button id="new-story-button">+ Story</button>
-        </li>
-        <li>
-          <button>+ Post</button>
-        </li>
-        <li>
-          <button>+ Photo</button>
-        </li>
+        <li><button id="new-story-button">Story</button></li>
+        <li><button>Post</button></li>
+        <li><button>Photo</button></li>
       </ul>
     </div>
 
     <%= form_for @story, url: memorial_stories_path(memorial_id: @memorial.id), id: "add-story-form" do |f| %>
       <%= f.label :story %>
-      <%= f.text_field :story, class: "story-input", id: "add-story-input" %>
+      <div class="add-story-input-container">
+      <%= f.text_area :story, class: "story-input", id: "add-story-input", placeholder: "Share a story about #{@memorial.name.split[0]}..." %>
+      </div>
       <p id="story-char-count"></p>
       <%= f.submit "Add Story", id: "add-story-button" %>
     <% end %>
