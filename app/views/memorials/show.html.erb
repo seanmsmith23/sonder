@@ -34,6 +34,8 @@
       <%= f.submit "Add Story", id: "add-story-button" %>
     <% end %>
 
+
+
     <div class="card-column-one"></div>
     <div class="card-column-two"></div>
     <div class="card-column-three"></div>
@@ -46,7 +48,7 @@
                 name: story.user.name,
                 story_id: story.id,
                 memorial_id: @memorial.id,
-                likes: @likes.where(story_id: story.id)
+                likes: @storylikes.where(story_id: story.id)
               } %>");
         </script>
       <% elsif index % 3 == 1 %>
@@ -56,7 +58,7 @@
                 name: story.user.name,
                 story_id: story.id,
                 memorial_id: @memorial.id,
-                likes: @likes.where(story_id: story.id)
+                likes: @storylikes.where(story_id: story.id)
               } %>");
         </script>
       <% elsif index % 3 == 2 %>
@@ -66,7 +68,7 @@
                 name: story.user.name,
                 story_id: story.id,
                 memorial_id: @memorial.id,
-                likes: @likes.where(story_id: story.id)
+                likes: @storylikes.where(story_id: story.id)
               } %>");
         </script>
       <% end %>

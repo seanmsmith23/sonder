@@ -1,18 +1,18 @@
-class LikesController < ApplicationController
+class StorylikesController < ApplicationController
   def create
-    like = Like.new(
+    storylike = Storylike.new(
       story_id: params[:id],
       memorial_id: params[:memorial_id],
       user_id: current_user.id
     )
-    if like.save
+    if storylike.save
       render nothing: true
     end
   end
 
   def destroy
-    like = Like.where(user_id: current_user.id, story_id: params[:id])
-    like.destroy_all
+    storylike = Storylike.where(user_id: current_user.id, story_id: params[:id])
+    storylike.destroy_all
     render nothing: true
   end
 end

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :stories, only: [:create]
   end
 
-  resources :likes, only: [:create, :destroy]
+  resources :storylikes, only: [:create, :destroy]
 
   get "/signout" => "sessions#destroy"
 

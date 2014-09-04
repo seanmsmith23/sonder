@@ -26,7 +26,8 @@ class MemorialsController < ApplicationController
     @memorial = Memorial.find(params[:id])
     @stories = Story.where(memorial_id: params[:id])
     @story = Story.new
-    @likes = Like.where(memorial_id: params[:id])
+    @storylikes = Storylike.where(memorial_id: params[:id])
+    @post = Post.new
   end
 
   def update

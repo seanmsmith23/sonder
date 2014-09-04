@@ -11,16 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140903140731) do
+ActiveRecord::Schema.define(version: 20140904134624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "likes", force: true do |t|
-    t.integer "story_id"
-    t.integer "user_id"
-    t.integer "memorial_id"
-  end
 
   create_table "memberships", force: true do |t|
     t.integer  "user_id"
@@ -52,6 +46,12 @@ ActiveRecord::Schema.define(version: 20140903140731) do
     t.text     "story"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "storylikes", force: true do |t|
+    t.integer "story_id"
+    t.integer "user_id"
+    t.integer "memorial_id"
   end
 
   create_table "users", force: true do |t|

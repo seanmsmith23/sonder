@@ -5,7 +5,7 @@ $(document).ready(function(){
   var postLike = function(storyID, memorialID){
     $.ajax({
       type: "POST",
-      url: "/likes",
+      url: "/storylikes",
       data: {
         id: storyID,
         memorial_id: memorialID
@@ -16,7 +16,7 @@ $(document).ready(function(){
   var deleteLike = function(storyID){
     $.ajax({
       type: "DELETE",
-      url: "/likes/" + storyID
+      url: "/storylikes/" + storyID
     });
   };
 
