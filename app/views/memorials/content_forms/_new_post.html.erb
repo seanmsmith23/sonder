@@ -1,0 +1,8 @@
+<%= form_for @post, url: memorial_posts_path(memorial_id: @memorial.id), id: "add-post-form" do |f| %>
+  <%= f.label :post %>
+  <div class="add-post-input-container">
+    <%= f.text_area :content, class: "post-input", id: "add-post-input", placeholder: "Share a post about #{@memorial.name.split[0]}..." %>
+  </div>
+  <p id="post-char-count"></p>
+  <%= f.submit "Add post", id: "add-post-button" %>
+<% end %>

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get "find", on: :collection
     resources :memberships, only: [:new, :create]
     resources :stories, only: [:create]
+    resources :posts, only: [:create]
   end
 
   resources :storylikes, only: [:create, :destroy]

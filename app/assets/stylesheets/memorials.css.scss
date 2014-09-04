@@ -75,6 +75,31 @@
 
 }
 
+.new_post {
+  @include span-columns(10);
+  @include shift(1);
+  margin-bottom: 2vw;
+
+  textarea {
+    width: 100%;
+    height: 100%;
+  }
+
+  .add-post-input-container {
+    width: 100%;
+    height: 50vh;
+  }
+
+//  p {
+//    width: 30px;
+//    float: left;
+//  }
+
+  input {
+    float: right;
+  }
+}
+
 .memorial-name-dates {
   position: absolute;
   bottom: 4vw;

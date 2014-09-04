@@ -25,14 +25,8 @@
       </ul>
     </div>
 
-    <%= form_for @story, url: memorial_stories_path(memorial_id: @memorial.id), id: "add-story-form" do |f| %>
-      <%= f.label :story %>
-      <div class="add-story-input-container">
-      <%= f.text_area :story, class: "story-input", id: "add-story-input", placeholder: "Share a story about #{@memorial.name.split[0]}..." %>
-      </div>
-      <p id="story-char-count"></p>
-      <%= f.submit "Add Story", id: "add-story-button" %>
-    <% end %>
+    <%= render 'memorials/content_forms/new_story' %>
+    <%= render 'memorials/content_forms/new_post' %>
 
 
 
@@ -43,7 +37,7 @@
     <% @stories.each_with_index do |story, index| %>
       <% if index % 3 == 0 %>
         <script>
-          $('.card-column-one').append("<%= j render partial: 'story', locals: {
+          $('.card-column-one').append("<%= j render partial: 'card', locals: {
                 story_text: story.story,
                 name: story.user.name,
                 story_id: story.id,
@@ -53,7 +47,7 @@
         </script>
       <% elsif index % 3 == 1 %>
         <script>
-          $('.card-column-two').append("<%= j render partial: 'story', locals: {
+          $('.card-column-two').append("<%= j render partial: 'card', locals: {
                 story_text: story.story,
                 name: story.user.name,
                 story_id: story.id,
@@ -63,7 +57,7 @@
         </script>
       <% elsif index % 3 == 2 %>
         <script>
-          $('.card-column-three').append("<%= j render partial: 'story', locals: {
+          $('.card-column-three').append("<%= j render partial: 'card', locals: {
                 story_text: story.story,
                 name: story.user.name,
                 story_id: story.id,
