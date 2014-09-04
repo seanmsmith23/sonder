@@ -24,18 +24,6 @@ $(document).ready(function(){
 
 //  Changing the DOM
 
-  var checkCharCount = function(clicked, maxLength, charCountDOM, button){
-    charsTyped = clicked.val().length;
-    charCountDOM.html(maxLength - charsTyped);
-
-    if (charsTyped > maxLength){
-      charCountDOM.addClass('over-limit');
-      button.prop("disabled", true);
-    } else {
-      charCountDOM.removeClass('over-limit');
-      button.removeAttr("disabled");
-    }
-  };
 
   var changeLikeCount = function(clicked, upOrDown){
     var likeCount = clicked.parents('.card').find('.like-count');
@@ -60,7 +48,6 @@ $(document).ready(function(){
       element.find('.like-count').remove();
     }
   };
-
 
   var maxStoryLength = 500;
   var addStoryButton = $('#add-story-button');
