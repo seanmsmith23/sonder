@@ -23,11 +23,8 @@ class MemorialsController < ApplicationController
 
   def show
     check_user_membership(params[:id], current_user.id)
-    @memorial = Memorial.find(params[:id])
-    @stories = Story.where(memorial_id: params[:id])
-    @story = Story.new
-    @storylikes = Storylike.where(memorial_id: params[:id])
-    @post = Post.new
+
+    @memorial_page = MemorialPage.new(params[:id])
   end
 
   def update

@@ -1,7 +1,7 @@
-<%= form_for @story, url: memorial_stories_path(memorial_id: @memorial.id), id: "add-story-form" do |f| %>
+<%= form_for @memorial_page.new_story, url: memorial_stories_path(memorial_id: @memorial_page.memorial.id), id: "add-story-form" do |f| %>
   <%= f.label :story %>
   <div class="add-story-input-container">
-    <%= f.text_area :story, class: "story-input", id: "add-story-input", placeholder: "Share a story about #{@memorial.name.split[0]}..." %>
+    <%= f.text_area :story, class: "story-input", id: "add-story-input", placeholder: "Share a story about #{@memorial_page.memorial.name.split[0]}..." %>
   </div>
   <p id="story-char-count"></p>
   <%= f.submit "Add Story", id: "add-story-button" %>
