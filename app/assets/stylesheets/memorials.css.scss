@@ -50,23 +50,40 @@
   background-size: cover;
 }
 
-.memorial-name-dates {
-  position: absolute;
-  bottom: 4vw;
-  margin-left: 4vw;
+@media all {
+  .memorial-name-dates {
+    position: absolute;
+    bottom: 4vw;
+    margin-left: 4vw;
 
-  p {
-    text-align: left;
-    border-radius: 4px;
-    margin-auto: 100px;
-    padding: 0 1em 0.5em 1em;
-    background-color: rgba(0, 0, 0, 0.4);
-    color: white;
+    p {
+      text-align: left;
+      border-radius: 4px;
+      margin-auto: 100px;
+      padding: 0 1em 0.5em 1em;
+      background-color: rgba(0, 0, 0, 0.4);
+      color: white;
 
-    $memorial-display-font: 4vw;
+      $memorial-display-font: 4vmax;
+
+      #name {
+        font-size: $memorial-display-font;
+      }
+
+      #dates {
+        font-size: golden-ratio($memorial-display-font, -1);
+      }
+    }
+  }
+}
+
+@media (min-width: 650px) {
+  .memorial-name-dates {
+    $memorial-display-font: 4vmax;
 
     #name{
       font-size: $memorial-display-font;
+      color: yellow;
     }
 
     #dates {

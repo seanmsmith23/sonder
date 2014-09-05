@@ -3,26 +3,24 @@
   @include shift(1);
   margin-bottom: 2vw;
 
-  textarea {
+  #add-post-input {
     width: 100%;
     height: 100%;
   }
 
   .add-post-input-container {
     width: 100%;
-    height: 50vh;
+    height: 60vh;
   }
 
-  p {
+  #post-char-count {
     width: 30px;
     float: left;
     margin-top: 2vw;
-
   }
 
-  input {
+  #add-post-button {
     float: right;
     margin-top: 2vw;
-
   }
 }
