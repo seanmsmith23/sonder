@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'pg'
+gem 'rails_12factor'
 
 group :test, :development do
   gem 'selenium-webdriver'
