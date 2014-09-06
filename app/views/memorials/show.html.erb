@@ -8,7 +8,8 @@
         <%= @memorial_page.memorial.name %><br>
       </span>
       <span id="dates">
-        <%= @memorial_page.memorial.born.strftime("%b %l, %Y ")  %> - <%= @memorial_page.memorial.died.strftime("%b %l, %Y ") %>
+        <%= @memorial_page.memorial.born.strftime("%b %l, %Y ") %>
+        - <%= @memorial_page.memorial.died.strftime("%b %l, %Y ") %>
       </span>
     </p>
   </div>
@@ -19,42 +20,52 @@
 
     <div class="memorial-content-buttons scrollto">
       <ul>
-        <li><button id="new-story-button">Story</button></li>
-        <li><button id="new-post-button">Post</button></li>
-        <li><button>Photo</button></li>
+        <li>
+          <button id="new-story-button">Story</button>
+        </li>
+        <li>
+          <button id="new-post-button">Post</button>
+        </li>
+        <li>
+          <button>Photo</button>
+        </li>
       </ul>
     </div>
 
     <%= render 'memorials/content_forms/new_story' %>
     <%= render 'memorials/content_forms/new_post' %>
 
-    <div class="card-column-one"></div>
-    <div class="card-column-two"></div>
-    <div class="card-column-three"></div>
+    <div class="three-columns">
+      <div class="three-column-one"></div>
+      <div class="three-column-two"></div>
+      <div class="three-column-three"></div>
+    </div>
 
-    <% @memorial_page.stories.each_with_index do |story, index| %>
+    <div class="columns-container">
+      <% @memorial_page.stories.each_with_index do |story, index| %>
 
-      <% story_input = {
-        story_text: story.story,
-        name: story.user.name,
-        story_id: story.id,
-        memorial_id: @memorial_page.memorial.id,
-        likes: story.storylikes
-      } %>
+        <% story_input = {
+          story_text: story.story,
+          name: story.user.name,
+          story_id: story.id,
+          memorial_id: @memorial_page.memorial.id,
+          likes: story.storylikes
+        } %>
 
-      <% if index % 3 == 0 %>
-        <script>
-          $('.card-column-one').append("<%= j render partial: 'memorials/cards/story_card', locals: story_input %>");
-        </script>
-      <% elsif index % 3 == 1 %>
-        <script>
-          $('.card-column-two').append("<%= j render partial: 'memorials/cards/story_card', locals: story_input %>");
-        </script>
-      <% elsif index % 3 == 2 %>
-        <script>
-          $('.card-column-three').append("<%= j render partial: 'memorials/cards/story_card', locals: story_input %>");
-        </script>
+        <% if index % 3 == 0 %>
+          <script>
+            $('.three-column-one').append("<%= j render partial: 'memorials/cards/story_card', locals: story_input %>");
+          </script>
+        <% elsif index % 3 == 1 %>
+          <script>
+            $('.three-column-two').append("<%= j render partial: 'memorials/cards/story_card', locals: story_input %>");
+          </script>
+        <% elsif index % 3 == 2 %>
+          <script>
+            $('.three-column-three').append("<%= j render partial: 'memorials/cards/story_card', locals: story_input %>");
+          </script>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>

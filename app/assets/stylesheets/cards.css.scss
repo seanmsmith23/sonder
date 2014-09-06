@@ -1,13 +1,27 @@
-.card-column-one {
+.three-column-one {
   @include span-columns(4);
 }
 
-.card-column-two {
+.three-column-two {
   @include span-columns(4);
 }
 
-.card-column-three {
+.three-column-three {
   @include span-columns(4);
+  margin: 0;
+}
+
+.two-column-one {
+  @include span-columns(6);
+}
+
+.two-column-two {
+  @include span-columns(6);
+  margin: 0;
+}
+
+.one-column-one {
+  @include outer-container();
   margin: 0;
 }
 
