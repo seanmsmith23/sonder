@@ -6,8 +6,25 @@
     <%= name %>
   </div>
   <div class="card-copy">
-    <%= simple_format post_title %><br>
-    <%= simple_format post_content[0..80] %>
+    <span class="post-title">
+      <%= simple_format post_title %>
+    </span>
+    <%= simple_format (post_content[0..140] + "...") %>
+
+    <div class="modal">
+      <label for="modal-<%= post_id %>">
+        <div class="btn js-btn"><span>Click for full post</span></div>
+      </label>
+      <input class="modal-state" id="modal-<%= post_id %>" type="checkbox" />
+      <div class="modal-window">
+        <div class="modal-inner">
+          <label class="modal-close" for="modal-<%= post_id %>"></label>
+          <h1><%= post_title %></h1>
+          <p class="body"><p style="font-weight: bold">by <%= name %></p><%= simple_format post_content %></p>
+        </div>
+      </div>
+    </div>
+
   </div>
   <div class="card-stats">
     <ul>
