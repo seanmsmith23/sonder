@@ -9,7 +9,8 @@ class MemorialPage
   end
 
   def content
-    @content = @stories + @posts
+    combined = @stories + @posts
+    @content = combined.sort_by(&:created_at)
   end
 
   def memorial

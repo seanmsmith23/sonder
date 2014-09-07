@@ -6,11 +6,12 @@
     <%= name %>
   </div>
   <div class="card-copy">
-    <%= simple_format post_ %>
+    <%= simple_format post_title %><br>
+    <%= simple_format post_content[0..80] %>
   </div>
   <div class="card-stats">
     <ul>
-      <% if likes.where(user_id: current_user.id).count > 0 %>
+      <% if likes.count > 1 #likes.where(user_id: current_user.id).count > 0 %>
         <li id="liked">
       <% else %>
         <li>
