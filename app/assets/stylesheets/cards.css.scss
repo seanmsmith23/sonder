@@ -21,7 +21,7 @@
 }
 
 .one-column-one {
-  @include outer-container();
+  @include span-columns(12);
   margin: 0;
 }
 
@@ -181,7 +181,7 @@
     color: $base-link-color;
 
     &:hover {
-      color: $hover-link-color;
+      color: darken($hover-link-color, 10);
     }
   }
 
@@ -192,7 +192,7 @@
   .modal-window { // overlay
     @include transition(opacity .25s ease);
     @include position(fixed, 0px 0px 0px 0px);
-    background: rgba(0,0,0, .85);
+    background: rgba(0,0,0, .80);
     opacity: 0;
     text-align: left;
     visibility: hidden;
