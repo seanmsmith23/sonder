@@ -1,6 +1,7 @@
 function MoveCards(cards){
 
-  this.cards = cards
+  this.cards = cards;
+  this.count = this.cards.length;
 
   this.threeColumns = function(index, element) {
     if (index % 3 == 0) {
@@ -38,5 +39,4 @@ function MoveCards(cards){
   this.three = function(){
     this.cards.each(this.threeColumns);
   };
-
 }

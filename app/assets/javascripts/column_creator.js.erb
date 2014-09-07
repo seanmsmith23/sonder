@@ -1,16 +1,9 @@
 $(document).ready(function(){
 
-  var threeColumnContainer = $('.three-columns');
-  var twoColumnContainer = $('.two-columns');
-  var oneColumnContainer = $('.one-column');
-
   var windowWidth = $(window).innerWidth();
-  console.log(windowWidth);
-
   var currentColumns = 3;
   var cards = $('.card');
   var cardMover = new MoveCards(cards);
-
 
   var renderColumns = function(width){
     if (width <= 600 && currentColumns != 1) {
@@ -19,8 +12,6 @@ $(document).ready(function(){
 
       cardMover.one();
       currentColumns = 1;
-      console.log('CURRENT COLUMNS' + currentColumns);
-      console.log('hitting the one!!!');
 
       $('.three-columns').remove();
       $('.two-columns').remove();
@@ -32,9 +23,6 @@ $(document).ready(function(){
 
       cardMover.two();
       currentColumns = 2;
-      console.log('CURRENT COLUMNS' + currentColumns);
-      console.log('hitting the two!!!');
-
 
       $('.one-column').remove();
       $('.three-columns').remove();
@@ -48,8 +36,6 @@ $(document).ready(function(){
 
       cardMover.three();
       currentColumns = 3;
-      console.log('CURRENT COLUMNS' + currentColumns);
-      console.log('hitting the three!!!');
 
       $('.two-columns').remove();
       $('.one-column').remove();
@@ -59,12 +45,7 @@ $(document).ready(function(){
   renderColumns(windowWidth);
 
   $(window).resize(function(){
-
     var windowWidth = $(window).innerWidth();
-
-    console.log(windowWidth);
     renderColumns(windowWidth);
   });
-
-
 });
