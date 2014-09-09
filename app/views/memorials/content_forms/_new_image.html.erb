@@ -1,0 +1,4 @@
+<%= form_for @memorial_page.new_image, url: memorial_images_path(memorial_id: @memorial_page.memorial.id), html: {multipart: true} do |f| %>
+  <%= f.file_field :image %>
+  <%= f.submit %>
+<% end %>

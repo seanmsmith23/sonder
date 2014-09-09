@@ -2,14 +2,13 @@ class MemorialPage
 
   def initialize(memorial_id)
     @memorial = Memorial.find(memorial_id)
-    @stories = Story.where(memorial_id: memorial_id)
     @story = Story.new
     @post = Post.new
-    @posts = Post.where(memorial_id: memorial_id)
+    @image = Image.new
   end
 
   def content
-    combined = @stories + @posts
+    combined = @memorial.stories + @memorial.posts
     @content = combined.sort_by(&:created_at)
   end
 
@@ -17,20 +16,16 @@ class MemorialPage
     @memorial
   end
 
-  def stories
-    @stories
-  end
-
   def new_story
     @story
   end
 
-  def posts
-    @posts
-  end
-
   def new_post
     @post
+  end
+
+  def new_image
+    @image
   end
 
 end
