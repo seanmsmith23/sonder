@@ -13,16 +13,29 @@
 
 .two-column-one {
   @include span-columns(6);
+  max-width: 344px;
 }
 
 .two-column-two {
   @include span-columns(6);
+  max-width: 344px;
   margin: 0;
 }
 
 .one-column-one {
   @include span-columns(12);
+  max-width: 344px;
   margin: 0;
+}
+
+.two-columns {
+  width: 710px;
+  margin: auto;
+}
+
+.one-column {
+  width: 340px;
+  margin: auto;
 }
 
 .cards {
