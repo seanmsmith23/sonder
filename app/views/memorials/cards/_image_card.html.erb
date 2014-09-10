@@ -1,0 +1,28 @@
+<div class="card" data-id="<%= image_id %>" data-memorial-id="<%= memorial_id %>" data-like-count="<%= likes.count %>">
+  <div class="card-image">
+    <%= image_tag image %>
+  </div>
+  <div class="card-header">
+    <%= name %>
+  </div>
+  <div class="card-copy">
+    <%= simple_format image_text %>
+  </div>
+  <div class="card-stats">
+    <ul>
+      <% #if likes.where(user_id: current_user.id).count > 0 %>
+        <li id="liked">
+      <% #else %>
+        <li>
+      <%# end %>
+      <%= form_tag do %>
+        <%= image_submit_tag("heart-plus-icon-red.png", class: "unlike") %>
+      <% end %>
+      <%= form_tag do %>
+        <%= image_submit_tag("heart-plus-icon.png", class: "story-favorite") %>
+      <% end %>
+      </li>
+      <li class="like-count" data-likes="<%= likes.count %>"><%= likes.count %></li>
+    </ul>
+  </div>
+</div>

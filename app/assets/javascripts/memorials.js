@@ -6,9 +6,13 @@ $(document).ready(function(){
   var newPostForm = $('.new_post');
   var newPostButton = $('#new-post-button');
 
+  var newImageForm = $('.new_image');
+  var newImageButton = $('#new-image-button');
+
   var hideForms = function(){
     newPostForm.hide();
     newStoryForm.hide();
+    newImageForm.hide();
   };
 
   hideForms();
@@ -26,11 +30,13 @@ $(document).ready(function(){
     buttons.removeClass('clicked-button');
   };
 
-  var postAndImageForms =  newPostForm.add();
-  var storyAndImageForms = newStoryForm.add();
+  var postAndImageForms =  newPostForm.add(newImageForm);
+  var storyAndImageForms = newStoryForm.add(newImageForm);
+  var postAndStoryForms = newStoryForm.add(newPostForm);
 
-  var postAndImageButtons = newPostButton.add();
-  var storyAndImageButtons = newStoryButton.add();
+  var postAndImageButtons = newPostButton.add(newImageButton);
+  var storyAndImageButtons = newStoryButton.add(newImageButton);
+  var postAndStoryButtons = newStoryButton.add(newPostButton);
 
   newStoryButton.click(function(){
     clearButtonColor(postAndImageButtons);
@@ -42,6 +48,12 @@ $(document).ready(function(){
     clearButtonColor(storyAndImageButtons);
     hideAndShow(newPostForm, storyAndImageForms);
     buttonClickedColor(newPostButton);
+  });
+
+  newImageButton.click(function(){
+    clearButtonColor(postAndStoryButtons);
+    hideAndShow(newImageForm, postAndStoryForms);
+    buttonClickedColor(newImageButton);
   });
 
 });

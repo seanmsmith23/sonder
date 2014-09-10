@@ -27,7 +27,7 @@
           <button id="new-post-button">Post</button>
         </li>
         <li>
-          <button>Photo</button>
+          <button id="new-image-button">Photo</button>
         </li>
       </ul>
     </div>
@@ -45,11 +45,7 @@
     <div class="columns-container">
       <% @memorial_page.content.each_with_index do |content, index| %>
 
-        <% if content.class == Story %>
-          <% locals = story_locals(content.story, content.user.name, content.id, @memorial_page.memorial.id, content.storylikes) %>
-        <% elsif content.class == Post %>
-          <% locals = post_locals(content.content, content.title, content.user.name, content.id, @memorial_page.memorial.id, []) %>
-        <% end %>
+        <% locals = create_locals(content, @memorial_page.memorial) %>
 
         <% if index % 3 == 0 && content.class == Story %>
           <script>
@@ -76,6 +72,20 @@
         <% elsif index % 3 == 2 && content.class == Post  %>
           <script>
             $('.three-column-three').append("<%= j render partial: 'memorials/cards/post_card', locals: locals %>");
+          </script>
+        <% end %>
+
+        <% if index % 3 == 0 && content.class == Image %>
+          <script>
+            $('.three-column-one').append("<%= j render partial: 'memorials/cards/image_card', locals: locals %>");
+          </script>
+        <% elsif index % 3 == 1 && content.class == Image  %>
+          <script>
+            $('.three-column-two').append("<%= j render partial: 'memorials/cards/image_card', locals: locals %>");
+          </script>
+        <% elsif index % 3 == 2 && content.class == Image  %>
+          <script>
+            $('.three-column-three').append("<%= j render partial: 'memorials/cards/image_card', locals: locals %>");
           </script>
         <% end %>
 

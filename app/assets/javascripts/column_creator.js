@@ -25,7 +25,7 @@ $(document).ready(function(){
 
 
   var renderColumns = function(width){
-    if (width <= 600 && currentColumns != 1) {
+    if (width <= 710 && currentColumns != 1) {
       divMaker(1);
 
       cardMover.one();
@@ -34,7 +34,7 @@ $(document).ready(function(){
       $('.three-columns').remove();
       $('.two-columns').remove();
     }
-    else if (width > 600 && width <= 1150 && currentColumns != 2) {
+    else if (width > 710 && width <= 1150 && currentColumns != 2) {
       divMaker(2);
 
       cardMover.two();
