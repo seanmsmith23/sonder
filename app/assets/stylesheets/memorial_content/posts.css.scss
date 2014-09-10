@@ -1,7 +1,8 @@
 .new_post {
-  @include span-columns(10);
-  @include shift(1);
-  margin-bottom: 2vw;
+  min-width: 328px;
+  width: 60%;
+  margin: auto auto 75px auto;
+
 
   #add-post-input {
     width: 100%;
