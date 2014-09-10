@@ -1,6 +1,6 @@
 <div class="card" data-id="<%= image_id %>" data-memorial-id="<%= memorial_id %>" data-like-count="<%= likes.count %>">
   <div class="card-image">
-    <%= image_tag image %>
+    <%= image_tag image.versions[:card] %>
   </div>
   <div class="card-header">
     <%= name %>

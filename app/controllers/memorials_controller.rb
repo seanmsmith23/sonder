@@ -23,7 +23,8 @@ class MemorialsController < ApplicationController
 
   def show
     check_user_membership(params[:id], current_user.id)
-
+    @images = Image.all
+    # byebug
     @memorial_page = MemorialPage.new(params[:id])
   end
 

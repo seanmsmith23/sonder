@@ -14,11 +14,11 @@ module MemorialsHelper
 
   def create_locals(content, memorial)
     if content.class == Story
-      locals = story_locals(content.story, content.user.name, content.id, memorial.id, content.storylikes)
+      story_locals(content.story, content.user.name, content.id, memorial.id, content.storylikes)
     elsif content.class == Post
-      locals = post_locals(content.content, content.title, content.user.name, content.id, @memorial_page.memorial.id, [])
+      post_locals(content.content, content.title, content.user.name, content.id, @memorial_page.memorial.id, [])
     elsif content.class == Image
-      locals = image_locals(content.subtitle, content.image, content.id, content.user.name, memorial.id, [])
+      image_locals(content.subtitle, content.image, content.id, content.user.name, memorial.id, [])
     end
   end
 end
