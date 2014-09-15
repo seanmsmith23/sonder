@@ -20,15 +20,9 @@
 
     <div class="memorial-content-buttons scrollto">
       <ul>
-        <li>
-          <button id="new-story-button">Story</button>
-        </li>
-        <li>
-          <button id="new-post-button">Post</button>
-        </li>
-        <li>
-          <button id="new-image-button">Photo</button>
-        </li>
+        <li><button id="new-story-button">Story</button></li>
+        <li><button id="new-post-button">Post</button></li>
+        <li><button id="new-image-button">Photo</button></li>
       </ul>
     </div>
 
@@ -36,11 +30,6 @@
     <%= render 'memorials/content_forms/new_post' %>
     <%= render 'memorials/content_forms/new_image' %>
 
-    <!--<div class="three-columns">-->
-      <!--<div class="three-column-one"></div>-->
-      <!--<div class="three-column-two"></div>-->
-      <!--<div class="three-column-three"></div>-->
-    <!--</div>-->
 
     <div class="columns-container">
       <% @memorial_page.content.each do |content| %>
@@ -58,7 +47,4 @@
 
     </div>
   </div>
-
 </div>
-
-
