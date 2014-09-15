@@ -21,4 +21,5 @@ module MemorialsHelper
       image_locals(content.subtitle, content.image, content.id, content.user.name, memorial.id, [])
     end
   end
+
 end
