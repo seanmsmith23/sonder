@@ -3,7 +3,8 @@ def clear_seeds
   Memorial.destroy_all
   Membership.destroy_all
   Story.destroy_all
-  Storylike.destroy_all
+  Post.destroy_all
+  Like.destroy_all
 end
 
 def create_user(name)
