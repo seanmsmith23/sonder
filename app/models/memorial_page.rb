@@ -1,5 +1,7 @@
 class MemorialPage
 
+  attr_accessor :memorial
+
   def initialize(memorial_id)
     @memorial = Memorial.find(memorial_id)
     @story = Story.new
@@ -9,10 +11,6 @@ class MemorialPage
 
   def content
     @content = @memorial.stories + @memorial.posts + @memorial.images
-  end
-
-  def memorial
-    @memorial
   end
 
   def new_story

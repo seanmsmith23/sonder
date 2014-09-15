@@ -1,4 +1,4 @@
-<div class="card" data-id="<%= post_id %>" data-memorial-id="<%= memorial_id %>" data-like-count="<%= likes.count %>">
+<div class="card" data-id="<%= post_id %>" data-memorial-id="<%= memorial_id %>" data-like-count="<%= likes.count %>"  data-type="<%= type %>">
   <div class="card-header">
     <%= name %>
   </div>
@@ -25,7 +25,7 @@
   </div>
   <div class="card-stats">
     <ul>
-      <% if likes.count > 1 #likes.where(user_id: current_user.id).count > 0 %>
+      <% if likes.where(user_id: current_user.id).count > 0 %>
         <li id="liked">
       <% else %>
         <li>

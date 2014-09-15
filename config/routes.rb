@@ -12,7 +12,8 @@ Rails.application.routes.draw do
     resources :images, only: [:create]
   end
 
-  resources :storylikes, only: [:create, :destroy]
+  resources :likes, only: [:create]
+  resource :likes, only: [:destroy]
 
   get "/signout" => "sessions#destroy"
 

@@ -2,5 +2,5 @@ class Post < ActiveRecord::Base
   belongs_to :user
   belongs_to :memorial
 
-  has_many :storylikes
+  has_many :likes, as: :likeable
 end
