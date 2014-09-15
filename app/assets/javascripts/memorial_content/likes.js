@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  var $favoriteButton = $('.story-favorite');
+  var $favoriteButton = $('.favorite');
   var $deleteFavorite = $('.unlike');
 
   var postLike = function(storyID, contentType){
@@ -38,9 +38,9 @@ $(document).ready(function(){
 
   var checkForLikes = function(element){
     if ( element.find('#liked').size() > 0 ){
-      element.find('.story-favorite').hide();
+      element.find('.favorite').hide();
     } else {
-      element.find('.story-favorite').show();
+      element.find('.favorite').show();
       element.find('.unlike').hide();
     }
 
@@ -57,7 +57,7 @@ $(document).ready(function(){
     e.preventDefault();
 
     $(this).parents('li').find('.unlike').show();
-    $(this).parents('li').find('.story-favorite').hide();
+    $(this).parents('li').find('.favorite').hide();
 
     var storyID = $(this).parents('.card').attr('data-id');
     var contentType = $(this).parents('.card').attr('data-type');
@@ -76,7 +76,7 @@ $(document).ready(function(){
     e.preventDefault();
 
     $(this).parents('li').find('.unlike').hide();
-    $(this).parents('li').find('.story-favorite').show();
+    $(this).parents('li').find('.favorite').show();
 
     var storyID = $(this).parents('.card').attr('data-id');
     var contentType = $(this).parents('.card').attr('data-type');

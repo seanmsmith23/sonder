@@ -159,6 +159,16 @@
       background-color: $card-background;
     }
   }
+
+  .favorite {
+    height: 1em;
+    width: 1em;
+  }
+
+  .unlike {
+    height: 1em;
+    width: 1em;
+  }
 }
 
 .modal {
