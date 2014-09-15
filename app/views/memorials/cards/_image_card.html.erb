@@ -6,15 +6,28 @@
     <%= name %>
   </div>
   <div class="card-copy">
-    <%= simple_format image_text %>
-  </div>
+  <%= simple_format image_text %>
+
+    <div class="image-modal">
+      <label for="modal-<%= image_id %>">
+      </label>
+      <input class="modal-state" id="modal-<%= image_id %>" type="checkbox" />
+      <div class="modal-window">
+        <div class="modal-inner">
+          <label class="modal-close" for="modal-<%= image_id %>"></label>
+          <%= image_tag image %>
+        </div>
+      </div>
+    </div>
+
+</div>
   <div class="card-stats">
     <ul>
-      <% #if likes.where(user_id: current_user.id).count > 0 %>
+      <% if false #likes.where(user_id: current_user.id).count > 0 %>
         <li id="liked">
-      <% #else %>
+      <% else %>
         <li>
-      <%# end %>
+      <% end %>
       <%= form_tag do %>
         <%= image_submit_tag("heart-plus-icon-red.png", class: "unlike") %>
       <% end %>

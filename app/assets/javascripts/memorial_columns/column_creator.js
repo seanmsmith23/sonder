@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
   var windowWidth = $(window).innerWidth();
-  var currentColumns = 3;
+  var currentColumns = 4;
   var cards = $('.card');
   var cardMover = new MoveCards(cards);
 

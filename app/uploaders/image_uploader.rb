@@ -25,10 +25,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
-  # process :scale => [200, 300]
+  # process card_versions
   #
-  # def scale(width, height)
-  #   # do something
+  # def card_versions
   # end
 
   # Create different versions of your uploaded files:

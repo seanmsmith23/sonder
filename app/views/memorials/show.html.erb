@@ -8,8 +8,8 @@
         <%= @memorial_page.memorial.name %><br>
       </span>
       <span id="dates">
-        <%= @memorial_page.memorial.born.strftime("%b %l, %Y ") %>
-        - <%= @memorial_page.memorial.died.strftime("%b %l, %Y ") %>
+        <%= @memorial_page.memorial.born.strftime("%b %e, %Y ") %>
+        - <%= @memorial_page.memorial.died.strftime("%b %e, %Y ") %>
       </span>
     </p>
   </div>
@@ -37,7 +37,6 @@
     <%= render 'memorials/content_forms/new_image' %>
 
     <div class="three-columns">
-      <%= image_tag @images.first.image.versions[:thumb] if @images.first%>
       <div class="three-column-one"></div>
       <div class="three-column-two"></div>
       <div class="three-column-three"></div>
