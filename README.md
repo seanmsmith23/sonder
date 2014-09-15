@@ -5,7 +5,7 @@ and web technologies to improve online memorials.
 
 ## Getting Started
 
-Fork/clone the project and run 'bundle'.
+Fork/clone the project and run `bundle`.
 Run:
  `rake db:create
  rake db:migrate
