@@ -1,13 +1,13 @@
-<div class="card" data-id="<%= story_id %>" data-memorial-id="<%= memorial_id %>" data-like-count="<%= likes.count %>"  data-type="<%= type %>">
+<div class="card" data-id="<%= story.id %>" data-memorial-id="<%= story.memorial.id %>" data-like-count="<%= story.likes.count %>"  data-type="Story">
   <div class="card-header">
-    <%= name %>
+    <%= story.user.name %>
   </div>
   <div class="card-copy">
-    <%= simple_format story_text %>
+    <%= simple_format story.story %>
   </div>
   <div class="card-stats">
     <ul>
-      <% if likes.where(user_id: current_user.id).count > 0 %>
+      <% if story.likes.count > 0 %>
         <li id="liked">
       <% else %>
         <li>
@@ -19,7 +19,7 @@
         <%= image_submit_tag("heart-plus-icon.png", class: "favorite") %>
       <% end %>
       </li>
-      <li class="like-count" data-likes="<%= likes.count %>"><%= likes.count %></li>
+      <li class="like-count" data-likes="<%= story.likes.count %>"><%= story.likes.count %></li>
     </ul>
   </div>
 </div>

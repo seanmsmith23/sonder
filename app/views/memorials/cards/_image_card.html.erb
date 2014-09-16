@@ -1,20 +1,20 @@
-<div class="card" data-id="<%= image_id %>" data-memorial-id="<%= memorial_id %>" data-like-count="<%= likes.count %>" data-type="<%= type %>">
+<div class="card" data-id="<%= image.id %>" data-memorial-id="<%= image.memorial.id %>" data-like-count="<%= image.likes.count %>" data-type="Image">
   <div class="card-image">
-    <%= image_tag image.versions[:card] %>
+    <%= image_tag image.image.versions[:card] %>
   </div>
   <div class="card-header">
-    <%= name %>
+    <%= image.user.name %>
   </div>
   <div class="card-copy">
-  <%= simple_format image_text %>
+  <%= simple_format image.subtitle %>
 
     <div class="image-modal">
-      <label for="modal-<%= image_id %>">
+      <label for="modal-<%= image.id %>">
       </label>
-      <input class="modal-state" id="modal-<%= image_id %>" type="checkbox" />
+      <input class="modal-state" id="modal-<%= image.id %>" type="checkbox" />
       <div class="modal-window">
         <div class="modal-inner">
-          <label class="modal-close" for="modal-<%= image_id %>"></label>
+          <label class="modal-close" for="modal-<%= image.id %>"></label>
           <%= image_tag image %>
         </div>
       </div>
@@ -23,7 +23,7 @@
 </div>
   <div class="card-stats">
     <ul>
-      <% if likes.where(user_id: current_user.id).count > 0 %>
+      <% if image.likes.count > 0 %>
         <li id="liked">
       <% else %>
         <li>
@@ -35,7 +35,7 @@
         <%= image_submit_tag("heart-plus-icon.png", class: "favorite") %>
       <% end %>
       </li>
-      <li class="like-count" data-likes="<%= likes.count %>"><%= likes.count %></li>
+      <li class="like-count" data-likes="<%= image.likes.count %>"><%= image.likes.count %></li>
     </ul>
   </div>
 </div>

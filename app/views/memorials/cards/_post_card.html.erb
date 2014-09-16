@@ -1,23 +1,23 @@
-<div class="card" data-id="<%= post_id %>" data-memorial-id="<%= memorial_id %>" data-like-count="<%= likes.count %>"  data-type="<%= type %>">
+<div class="card" data-id="<%= post.id %>" data-memorial-id="<%= post.memorial.id %>" data-like-count="<%= post.likes.count %>"  data-type="Post">
   <div class="card-header">
-    <%= name %>
+    <%= post.user.name %>
   </div>
   <div class="card-copy">
     <span class="post-title">
-      <%= simple_format post_title %>
+      <%= simple_format post.title %>
     </span>
-    <%= simple_format (post_content[0..140] + "...") %>
+    <%= simple_format (post.content[0..140] + "...") %>
 
     <div class="modal">
-      <label for="modal-<%= post_id %>">
+      <label for="modal-<%= post.id %>">
         <div class="btn js-btn"><span>Click for full post</span></div>
       </label>
-      <input class="modal-state" id="modal-<%= post_id %>" type="checkbox" />
+      <input class="modal-state" id="modal-<%= post.id %>" type="checkbox" />
       <div class="modal-window">
         <div class="modal-inner">
-          <label class="modal-close" for="modal-<%= post_id %>"></label>
-          <h1><%= post_title %></h1>
-          <p class="body"><p style="font-weight: bold">by <%= name %></p><%= simple_format post_content %></p>
+          <label class="modal-close" for="modal-<%= post.id %>"></label>
+          <h1><%= post.title %></h1>
+          <p class="body"><p style="font-weight: bold">by <%= post.user.name %></p><%= simple_format post.content %></p>
         </div>
       </div>
     </div>
@@ -25,7 +25,7 @@
   </div>
   <div class="card-stats">
     <ul>
-      <% if likes.where(user_id: current_user.id).count > 0 %>
+      <% if post.likes.count > 0 %>
         <li id="liked">
       <% else %>
         <li>
@@ -37,7 +37,7 @@
         <%= image_submit_tag("heart-plus-icon.png", class: "favorite") %>
       <% end %>
       </li>
-      <li class="like-count" data-likes="<%= likes.count %>"><%= likes.count %></li>
+      <li class="like-count" data-likes="<%= post.likes.count %>"><%= post.likes.count %></li>
     </ul>
   </div>
 </div>

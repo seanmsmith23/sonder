@@ -1,5 +1,8 @@
 <div class="row">
   <div class="memorial-cover-photo">
+    <div><%= image_tag 'mountain.jpg' %></div>
+    <div><%= image_tag 'heart-plus-icon-red.png' %></div>
+    <div><%= image_tag 'heart-plus-icon.png' %></div>
   </div>
 
   <div class="memorial-name-dates cntr-txt">
@@ -31,19 +34,9 @@
     <%= render 'memorials/content_forms/new_image' %>
 
     <div class="columns-container">
-      <% @memorial_page.content.each do |content| %>
-
-        <% locals = create_locals(content, @memorial_page.memorial) %>
-
-        <% if content.class == Story %>
-          <%= render partial: 'memorials/cards/story_card', locals: locals %>
-        <% elsif content.class == Post %>
-          <%= render partial: 'memorials/cards/post_card', locals: locals %>
-        <% elsif content.class == Image %>
-          <%= render partial: 'memorials/cards/image_card', locals: locals %>
-        <% end  %>
-      <% end %>
-
+      <%= render partial: "memorials/cards/image_card", collection: @memorial_page.memorial.images, as: :image %>
+      <%= render partial: "memorials/cards/post_card", collection: @memorial_page.memorial.posts, as: :post %>
+      <%= render partial: "memorials/cards/story_card", collection: @memorial_page.memorial.stories, as: :story %>
     </div>
   </div>
 </div>
