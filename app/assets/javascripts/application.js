@@ -13,12 +13,15 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require owl.carousel
 
 $(document).ready(function(){
 
   $(function() {
     $( ".datepicker" ).datepicker();
   });
+
+//  $('.memorial-cover-photo').owlCarousel();
 
 });
 
