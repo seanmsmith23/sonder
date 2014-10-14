@@ -1,6 +1,42 @@
 require 'rails_helper'
 require_relative '../helper_methods'
 
+feature "Content" do
+  let(:user){create_user}
+  let(:memorial){create_memorial}
+
+  before do
+    create_membership(user, memorial)
+    sign_in(user)
+    visit_memorial(memorial)
+  end
+
+  scenario "User should be able to delete content they created", js: true do
+    user2 = create_user
+    story1 = create_story(user_id: user2.id, memorial_id: memorial.id)
+
+    visit_memorial(memorial)
+
+    within('.card') do
+      expect(page).to have_content(story1.story)
+      expect(page).to_not have_link("Delete")
+    end
+
+    Story.find(story1.id).destroy
+    story2 = create_story(user_id: user.id, memorial_id: memorial.id, story: "Another story")
+    visit_memorial(memorial)
+
+    within('.card') do
+      expect(page).to have_content(story2.story)
+      expect(page).to have_link("Delete")
+    end
+
+    click_link("Delete")
+
+    expect(page).to_not have_content(story2.story)
+  end
+end
+
 feature "Story" do
   scenario "User can add a story", js: true do
     create_user_and_memorial

@@ -1,5 +1,5 @@
 def create_user(overrides = {})
-  num = rand(30)
+  num = rand(1000)
   defaults = {
     first_name: "Example#{num}",
     last_name: "User",
@@ -11,7 +11,7 @@ def create_user(overrides = {})
 end
 
 def create_memorial(overrides = {})
-  num = rand(30)
+  num = rand(1000)
   defaults = {
     name: "Example#{num} Whodied",
     born: 30.years.ago,
@@ -20,6 +20,16 @@ def create_memorial(overrides = {})
   }
 
   Memorial.create!(defaults.merge(overrides))
+end
+
+def create_story(overrides = {})
+  defaults = {
+    user_id: 1,
+    story: "I remember that time he ate a boiled turtle",
+    memorial_id: 1
+  }
+
+  Story.create!(defaults.merge(overrides))
 end
 
 def create_membership(user, memorial)

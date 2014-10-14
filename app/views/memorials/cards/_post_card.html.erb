@@ -1,4 +1,4 @@
-<div class="card" data-id="<%= post.id %>" data-memorial-id="<%= post.memorial.id %>" data-like-count="<%= post.likes.count %>"  data-type="Post">
+<div class="card" data-id="<%= post.id %>" id="<%= post.id %>" data-memorial-id="<%= post.memorial.id %>" data-like-count="<%= post.likes.count %>"  data-type="Post">
   <div class="card-header">
     <%= post.user.name %>
   </div>
@@ -38,6 +38,13 @@
       <% end %>
       </li>
       <li class="like-count" data-likes="<%= post.likes.count %>"><%= post.likes.count %></li>
+      <% if post.user.id == current_user.id %>
+        <div class="crud-actions">
+          <li>
+            <%= link_to "Delete", memorial_post_path(memorial_id: post.memorial.id, id: post.id), method: :delete %>
+          </li>
+        </div>
+      <% end %>
     </ul>
   </div>
 </div>

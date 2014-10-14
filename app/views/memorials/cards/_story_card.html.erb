@@ -1,4 +1,4 @@
-<div class="card" data-id="<%= story.id %>" data-memorial-id="<%= story.memorial.id %>" data-like-count="<%= story.likes.count %>"  data-type="Story">
+<div class="card" data-id="<%= story.id %>" id="<%= story.id %>" data-memorial-id="<%= story.memorial.id %>" data-like-count="<%= story.likes.count %>" data-type="Story">
   <div class="card-header">
     <%= story.user.name %>
   </div>
@@ -19,7 +19,16 @@
         <%= image_submit_tag("heart-plus-icon.png", class: "favorite") %>
       <% end %>
       </li>
-      <li class="like-count" data-likes="<%= story.likes.count %>"><%= story.likes.count %></li>
+      <li class="like-count" data-likes="<%= story.likes.count %>">
+        <%= story.likes.count %>
+      </li>
+      <% if story.user.id == current_user.id %>
+        <div class="crud-actions">
+          <li>
+            <%= link_to "Delete", memorial_story_path(memorial_id: story.memorial.id, id: story.id), method: :delete %>
+          </li>
+        </div>
+      <% end %>
     </ul>
   </div>
 </div>

@@ -1,4 +1,4 @@
-<div class="card" data-id="<%= image.id %>" data-memorial-id="<%= image.memorial.id %>" data-like-count="<%= image.likes.count %>" data-type="Image">
+<div class="card" data-id="<%= image.id %>" id="<%= image.id %>" data-memorial-id="<%= image.memorial.id %>" data-like-count="<%= image.likes.count %>" data-type="Image">
   <div class="card-image">
     <%= image_tag image.image.versions[:card] %>
   </div>
@@ -36,6 +36,13 @@
       <% end %>
       </li>
       <li class="like-count" data-likes="<%= image.likes.count %>"><%= image.likes.count %></li>
+      <% if image.user.id == current_user.id %>
+        <div class="crud-actions">
+          <li>
+            <%= link_to "Delete", memorial_image_path(memorial_id: image.memorial.id, id: image.id), method: :delete %>
+          </li>
+        </div>
+      <% end %>
     </ul>
   </div>
 </div>

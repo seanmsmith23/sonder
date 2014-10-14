@@ -11,4 +11,10 @@ class ImagesController < ApplicationController
       redirect_to memorial_path(params[:memorial_id])
     end
   end
+
+  def destroy
+    image = Image.where(memorial_id: params[:memorial_id], id: params[:id])
+    image.destroy_all
+    redirect_to memorial_path(params[:memorial_id])
+  end
 end

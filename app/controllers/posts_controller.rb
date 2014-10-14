@@ -8,4 +8,10 @@ class PostsController < ApplicationController
       render 'memorials/show'
     end
   end
+
+  def destroy
+    post = Post.where(memorial_id: params[:memorial_id], id: params[:id])
+    post.destroy_all
+    redirect_to memorial_path(params[:memorial_id])
+  end
 end

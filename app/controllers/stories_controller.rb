@@ -8,4 +8,10 @@ class StoriesController < ApplicationController
       render 'memorials/show'
     end
   end
+
+  def destroy
+    story = Story.where(memorial_id: params[:memorial_id], id: params[:id])
+    story.destroy_all
+    redirect_to memorial_path(params[:memorial_id])
+  end
 end
