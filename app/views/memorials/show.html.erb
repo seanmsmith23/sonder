@@ -1,6 +1,5 @@
-<div class="row">
-  <div class="memorial-cover-photo">
-  </div>
+<div class="memorial-wrapper" data-memorial-id="<%= @memorial_page.memorial.id %>">
+  <div class="memorial-cover-photo"></div>
 
   <div class="memorial-name-dates cntr-txt">
     <p>
@@ -13,27 +12,27 @@
       </span>
     </p>
   </div>
-</div>
 
-<div class="full-width">
-  <div class="memorial-content">
+  <div class="full-width">
+    <div class="memorial-content">
 
-    <div class="memorial-content-buttons scrollto">
-      <ul>
-        <li><button id="new-story-button">Story</button></li>
-        <li><button id="new-post-button">Post</button></li>
-        <li><button id="new-image-button">Photo</button></li>
-      </ul>
-    </div>
+      <div class="memorial-content-buttons scrollto">
+        <ul>
+          <li><button id="new-story-button">Story</button></li>
+          <li><button id="new-post-button">Post</button></li>
+          <li><button id="new-image-button">Photo</button></li>
+        </ul>
+      </div>
 
-    <%= render 'memorials/content_forms/new_story' %>
-    <%= render 'memorials/content_forms/new_post' %>
-    <%= render 'memorials/content_forms/new_image' %>
+      <%= render 'memorials/content_forms/new_story' %>
+      <%= render 'memorials/content_forms/new_post' %>
+      <%= render 'memorials/content_forms/new_image' %>
 
-    <div class="columns-container">
-      <%= render partial: "memorials/cards/image_card", collection: @memorial_page.memorial.images, as: :image %>
-      <%= render partial: "memorials/cards/post_card", collection: @memorial_page.memorial.posts, as: :post %>
-      <%= render partial: "memorials/cards/story_card", collection: @memorial_page.memorial.stories, as: :story %>
+      <div class="columns-container">
+        <%= render partial: "memorials/cards/image_card", collection: @memorial_page.memorial.images, as: :image %>
+        <%= render partial: "memorials/cards/post_card", collection: @memorial_page.memorial.posts, as: :post %>
+        <%= render partial: "memorials/cards/story_card", collection: @memorial_page.memorial.stories, as: :story %>
+      </div>
     </div>
   </div>
 </div>
