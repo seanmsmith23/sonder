@@ -22,6 +22,7 @@ group :test, :development do
   gem 'pry-rails'
   gem 'pry-debugger'
   gem 'pry-byebug'
+  gem 'faker'
 end
 
 gem 'bourbon'

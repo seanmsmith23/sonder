@@ -20,7 +20,6 @@ $(document).ready(function(){
     $( ".datepicker" ).datepicker();
   });
 
-//  $('.memorial-cover-photo').owlCarousel();
 
 });
 

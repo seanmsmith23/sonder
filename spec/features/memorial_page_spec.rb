@@ -1,7 +1,6 @@
 require 'rails_helper'
 require_relative '../helper_methods'
 
-
 feature "Story" do
   scenario "User can add a story", js: true do
     create_user_and_memorial
@@ -44,37 +43,42 @@ feature "Story" do
   end
 
   scenario "User can like and unlike storys", js: true do
-    create_user_and_memorial
+    user = create_user(first_name: "Some", last_name: "Guy")
+    memorial = create_memorial(name: "Abe Lincoln")
+    create_membership(user, memorial)
+    sign_in(user)
+    visit_memorial(memorial)
+
     new_story("Here's a story")
 
     within (find('.card')) do
       expect(page).to_not have_content("1")
       expect(page).to_not have_css('.unlike')
 
-      find('.story-favorite').click
+      find('.favorite').click
 
       expect(page).to have_content("1")
       expect(page).to have_css('.like-count')
-      expect(page).to_not have_css('.story-favorite')
+      expect(page).to_not have_css('.favorite')
 
       find('.unlike').click
 
       expect(page).to_not have_content("1")
       expect(page).to_not have_css('.like-count')
       expect(page).to_not have_css('.unlike')
-      expect(page).to have_css('.story-favorite')
+      expect(page).to have_css('.favorite')
     end
   end
 
   scenario "Likes persist upon page refresh", js: true do
     create_user_and_memorial
     new_story("Here's a story")
-    find('.story-favorite').click
+    find('.favorite').click
 
     visit '/memorials/1'
 
     expect(page).to have_content("1")
     expect(page).to have_css('.like-count')
-    expect(page).to_not have_css('.story-favorite')
+    expect(page).to_not have_css('.favorite')
   end
 end
