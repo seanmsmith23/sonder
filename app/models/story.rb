@@ -5,4 +5,6 @@ class Story < ActiveRecord::Base
   has_many :likes, as: :likeable
 
   validates :story, presence: true
+  validates :story, length: {maximum: 500}
+
 end

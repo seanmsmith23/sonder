@@ -4,5 +4,7 @@ class Image < ActiveRecord::Base
 
   has_many :likes, as: :likeable
 
+  validates :image, :subtitle, presence: true
+
   mount_uploader :image, ImageUploader
 end

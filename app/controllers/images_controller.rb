@@ -9,7 +9,10 @@ class ImagesController < ApplicationController
 
     if @image.save
       redirect_to memorial_path(params[:memorial_id])
+    else
+      render 'memorials/show'
     end
+
   end
 
   def edit
