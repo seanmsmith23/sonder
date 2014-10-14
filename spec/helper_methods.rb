@@ -17,7 +17,7 @@ def create_user_and_memorial
   visit_memorial(memorial)
 end
 
-def new_story(text)
+def fill_in_story(text)
   click_button("Story")
   fill_in "story[story]", with: text
   click_button("Add Story")
@@ -25,6 +25,17 @@ end
 
 def story_length
   500
+end
+
+def fill_in_post(overrides = {})
+  post = {title: "Some Title", content: ("a" * 700)}.merge(overrides)
+  fill_in "post[title]", with: post[:title]
+  fill_in "post[content]", with: post[:content]
+  click_button("Add post")
+end
+
+def post_length
+  2000
 end
 
 def visit_memorial(memorial)
