@@ -12,6 +12,16 @@ class ImagesController < ApplicationController
     end
   end
 
+  def edit
+    @image = Image.find(params[:id])
+  end
+
+  def update
+    image = Image.find(params[:id])
+    image.update(subtitle: params[:image][:subtitle])
+    redirect_to memorial_path(params[:memorial_id])
+  end
+
   def destroy
     image = Image.where(memorial_id: params[:memorial_id], id: params[:id])
     image.destroy_all

@@ -27,6 +27,9 @@
           <li>
             <%= link_to "Delete", memorial_story_path(memorial_id: story.memorial.id, id: story.id), method: :delete %>
           </li>
+          <li>
+            <%= link_to "Edit", edit_memorial_story_path(memorial_id: story.memorial.id, id: story.id) %>
+          </li>
         </div>
       <% end %>
     </ul>

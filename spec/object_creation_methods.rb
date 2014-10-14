@@ -32,6 +32,17 @@ def create_story(overrides = {})
   Story.create!(defaults.merge(overrides))
 end
 
+def create_post(overrides = {})
+  defaults = {
+    user_id: 1,
+    title: "Remembering a Good Turtle",
+    content: "aaaa " * 100,
+    memorial_id: 1
+  }
+
+  Post.create!(defaults.merge(overrides))
+end
+
 def create_membership(user, memorial)
   Membership.create!(user: user, memorial: memorial)
 end

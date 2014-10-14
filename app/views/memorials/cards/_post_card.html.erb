@@ -43,6 +43,9 @@
           <li>
             <%= link_to "Delete", memorial_post_path(memorial_id: post.memorial.id, id: post.id), method: :delete %>
           </li>
+          <li>
+            <%= link_to "Edit", edit_memorial_post_path(memorial_id: post.memorial.id, id: post.id) %>
+          </li>
         </div>
       <% end %>
     </ul>

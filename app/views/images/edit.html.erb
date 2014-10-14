@@ -1,0 +1,9 @@
+<div class="full-width">
+  <h1 class="cntr-txt">Edit Your Image</h1>
+  <%= form_for @image, url: memorial_image_path(memorial_id: @image.memorial.id), html: {multipart: true} do |f| %>
+    <%= f.label :subtitle %>
+    <%= f.text_field :subtitle %>
+
+    <%= f.submit "Edit Image", id: "add-image-button" %>
+  <% end %>
+</div>

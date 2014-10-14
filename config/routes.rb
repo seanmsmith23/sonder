@@ -7,14 +7,13 @@ Rails.application.routes.draw do
   resources :memorials do
     get "find", on: :collection
     resources :memberships, only: [:new, :create]
-    resources :stories, only: [:create, :destroy]
-    resources :posts, only: [:create, :destroy]
-    resources :images, only: [:create, :destroy]
+    resources :stories, only: [:create, :destroy, :edit, :update]
+    resources :posts, only: [:create, :destroy, :edit, :update]
+    resources :images, only: [:create, :destroy, :edit, :update]
   end
 
   resources :likes, only: [:create]
   resource :likes, only: [:destroy]
 
   get "/signout" => "sessions#destroy"
-
 end

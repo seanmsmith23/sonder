@@ -9,6 +9,16 @@ class StoriesController < ApplicationController
     end
   end
 
+  def edit
+    @story = Story.find(params[:id])
+  end
+
+  def update
+    story = Story.find(params[:id])
+    story.update(story: params[:story][:story])
+    redirect_to memorial_path(params[:memorial_id])
+  end
+
   def destroy
     story = Story.where(memorial_id: params[:memorial_id], id: params[:id])
     story.destroy_all

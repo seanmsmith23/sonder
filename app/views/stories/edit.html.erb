@@ -1,0 +1,12 @@
+<div class="full-width">
+  <h1 class="cntr-txt">Edit Your Story</h1>
+
+  <%= form_for @story, url: memorial_story_path(memorial_id: @story.memorial.id, id: @story.id) do |f| %>
+    <%= f.label :story %>
+    <div class="add-story-input-container">
+      <%= f.text_area :story, class: "story-input", id: "add-story-input" %>
+    </div>
+    <p id="story-char-count"></p>
+    <%= f.submit "Edit Story", id: "add-story-button" %>
+  <% end %>
+</div>
