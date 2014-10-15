@@ -69,4 +69,14 @@ $(document).ready(function(){
     carousel.advanceCarousel();
   }, 10000);
 
+  $('.previous-image').click(function(){
+    console.log("PREVIOUS IMAGE CLICKED");
+    carousel.reverseCarousel();
+  });
+
+  $('.next-image').click(function(){
+    console.log("NEXT IMAGE CLICKED");
+    carousel.advanceCarousel();
+  });
+
 });

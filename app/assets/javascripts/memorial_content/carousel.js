@@ -9,14 +9,14 @@ Carousel.prototype.advanceCarousel = function(){
   if (this.numberOfImages == 1){
     this.displaySingleImage();
   } else {
-    this.displayCurrentImage();
     this.nextImage();
+    this.displayCurrentImage();
   }
 };
 
 Carousel.prototype.reverseCarousel = function(){
-  this.previousImage()
-  this.displayCurrentImage()
+  this.previousImage();
+  this.displayCurrentImage();
 };
 
 Carousel.prototype.nextImage = function(){
@@ -47,4 +47,6 @@ Carousel.prototype.displayCurrentImage = function(){
   var link = "http://localhost:3000" + imageString;
 
   this.imageDisplay.css('background-image', "url(" + link + ")");
+
+  console.log("IMAGE DISPLAYED: " + this.currentImage);
 };

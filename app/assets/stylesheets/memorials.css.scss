@@ -106,5 +106,36 @@
   background-color: $hover-button-color;
 }
 
+.next-image {
+  position: absolute;
+  left: 4.6vw;
+  top: 45%;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 4px;
+  height: 10vmax;
+  max-height: 50px;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.55);
+  }
+}
+
+.previous-image {
+  position: absolute;
+  right: 4.6vw;
+  top: 45%;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 4px;
+  height: 10vmax;
+  max-height: 50px;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.55);
+  }
+}
+
+.image-string {
+  height: 0;
+  width: 0;
+}
+
 
 
