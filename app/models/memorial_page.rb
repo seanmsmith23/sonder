@@ -3,7 +3,8 @@ class MemorialPage
   attr_accessor :memorial
 
   def initialize(memorial_id)
-    @memorial = Memorial.find(memorial_id)
+    @memorial_id = memorial_id
+    @memorial = Memorial.find(@memorial_id)
     @story = Story.new
     @post = Post.new
     @image = Image.new
@@ -23,6 +24,14 @@ class MemorialPage
 
   def new_image
     @image
+  end
+
+  def carousel_images
+    @images = Image.where(memorial_id: @memorial_id, background: true)
+  end
+
+  def images
+    @images = Image.where(memorial_id: @memorial_id, background: false)
   end
 
 end

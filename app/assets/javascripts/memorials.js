@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+//  FORM-BUTTONS
+
   var newStoryForm = $('.new_story');
   var newStoryButton = $('#new-story-button');
 
@@ -55,5 +57,16 @@ $(document).ready(function(){
     hideAndShow(newImageForm, postAndStoryForms);
     buttonClickedColor(newImageButton);
   });
+
+//  CAROUSEL
+
+  var links = $('.image-string');
+  var imageDisplay = $('.memorial-cover-photo');
+
+  var carousel = new Carousel(links, imageDisplay);
+
+  window.setInterval(function(){
+    carousel.advanceCarousel();
+  }, 10000);
 
 });

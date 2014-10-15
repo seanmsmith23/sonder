@@ -17,6 +17,16 @@
           <%= f.label :died, "Date of Death (mm/dd/yyyy)" %>
           <%= f.text_field :died, class: "datepicker" %>
 
+          Add Photos:
+          <ul>
+            <%= f.fields_for :images do |images_form| %>
+              <%= images_form.label :image %>
+              <%= images_form.file_field :image %>
+
+              <%= images_form.label :subtitle %>
+              <%= images_form.text_field :subtitle %>
+            <% end %>
+          </ul>
           <%= f.submit "Create Memorial" %>
         <% end %>
       </div>

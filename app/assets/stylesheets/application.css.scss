@@ -1,6 +1,7 @@
 @import 'bourbon';
 @import 'neat';
 @import 'base/base';
+@import 'jquery.Jcrop';
 @import 'sessions';
 @import 'registration';
 @import 'memorials';
@@ -166,3 +167,4 @@
 .auto-margin {
   margin: auto;
 }
+
