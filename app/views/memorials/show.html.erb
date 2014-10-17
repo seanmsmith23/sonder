@@ -3,7 +3,7 @@
   <div class="memorial-cover-photo"></div>
 
   <% @memorial_page.carousel_images.each do |image| %>
-    <div class="image-string"><%= image.image %></div>
+    <div class="image-string"><%= image.image.versions[:cropped] %></div>
   <% end %>
 
   <div class="memorial-name-dates cntr-txt">
@@ -18,8 +18,10 @@
     </p>
   </div>
 
-  <%= image_tag "left-arrow.png", class: "next-image" %>
-  <%= image_tag "right-arrow.png", class: "previous-image" %>
+  <% if @memorial_page.carousel_images.count > 1 %>
+    <%= image_tag "left-arrow.png", class: "next-image" %>
+    <%= image_tag "right-arrow.png", class: "previous-image" %>
+  <% end %>
 
   <div class="full-width">
     <div class="memorial-content">
