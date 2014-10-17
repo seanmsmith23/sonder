@@ -1,6 +1,6 @@
 class ConvertStorylikesIntoPolymorphicLikes < ActiveRecord::Migration
   def change
-    drop_table :storylikes
+    drop_table :likes
 
     create_table :likes do |t|
       t.references :likeable, polymorphic: true
