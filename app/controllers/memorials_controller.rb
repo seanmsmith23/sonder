@@ -12,8 +12,8 @@ class MemorialsController < ApplicationController
   def create
 
     if dates_present?
-      born = Date.strptime(params[:memorial][:born], "%m/%d/%Y")
-      died = Date.strptime(params[:memorial][:died], "%m/%d/%Y")
+      born = parse_date(:born)
+      died = parse_date(:died)
     else
       born = ""
       died = ""
@@ -78,6 +78,10 @@ class MemorialsController < ApplicationController
 
   def dates_present?
     params[:memorial][:born].present? && params[:memorial][:died].present?
+  end
+
+  def parse_date(type)
+    Date.strptime(params[:memorial][type], "%m/%d/%Y")
   end
 
 end
