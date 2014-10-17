@@ -1,11 +1,6 @@
 class ImagesController < ApplicationController
   def create
-    @image = Image.create(
-      image: params[:image][:image],
-      memorial_id: params[:memorial_id],
-      user_id: current_user.id,
-      subtitle: params[:image][:subtitle]
-    )
+    @image = Image.create(allowed_params)
 
     if @image.save
       redirect_to memorial_path(params[:memorial_id])
@@ -26,7 +21,7 @@ class ImagesController < ApplicationController
       assign_crop_values(image)
       image.crop_image
     else
-      image.update(subtitle: params[:image][:subtitle])
+      image.update(allowed_params)
     end
 
     redirect_to memorial_path(params[:memorial_id])
@@ -40,6 +35,10 @@ class ImagesController < ApplicationController
 
   private
 
+  def allowed_params
+    permit(:image).require(:subtitle, :memorial_id, :user_id, :image)
+  end
+
   def crop_params_present?
     params[:image][:crop_x]
   end
@@ -50,4 +49,5 @@ class ImagesController < ApplicationController
     image.crop_w = params[:image][:crop_w]
     image.crop_h = params[:image][:crop_h]
   end
+
 end
