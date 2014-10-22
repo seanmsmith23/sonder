@@ -1,7 +1,7 @@
 <% @images.each do |image| %>
   <%= image_tag image.image, id: "cropbox" %>
 
-  <%= form_for image, url: memorial_image_path(memorial_id: image.memorial.id, id: image.id) do |f| %>
+  <%= form_for image, url: memorial_crop_path(memorial_id: image.memorial.id, id: image.id) do |f| %>
     <div class="actions">
       <% %w[x y w h].each do |attribute| %>
         <%= f.hidden_field "crop_#{attribute}"%>
@@ -11,3 +11,5 @@
   <% end %>
 
 <% end  %>
+
+<button id="hello">hi</button>

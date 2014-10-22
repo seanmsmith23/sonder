@@ -87,7 +87,6 @@ feature "Content" do
 
     fill_in "story[story]", with: "Some new content"
 
-    sleep(10)
     click_button "Edit Story"
 
     expect(page).to have_content(memorial.name)

@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+  $('#hello').click(function(){
+    alert('hello');
+  });
+
   var AvatarCropper,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
@@ -11,7 +15,7 @@ $(document).ready(function(){
     function AvatarCropper() {
       this.update = __bind(this.update, this);
       $('#cropbox').Jcrop({
-        aspectRatio: (16/11),
+        aspectRatio: (16/10),
         onSelect: this.update,
         onChange: this.update
       });

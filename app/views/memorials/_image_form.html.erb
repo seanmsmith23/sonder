@@ -1,0 +1,9 @@
+<li>
+  <%= f.fields_for :images do |images_form| %>
+    <%= images_form.label :image %>
+    <%= images_form.file_field :image %>
+
+    <%= images_form.label :subtitle %>
+    <%= images_form.text_field :subtitle %>
+  <% end %>
+</li>

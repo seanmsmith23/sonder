@@ -18,15 +18,12 @@
           <%= f.text_field :died, class: "datepicker" %>
 
           Add Photos:
-          <ul>
-            <%= f.fields_for :images do |images_form| %>
-              <%= images_form.label :image %>
-              <%= images_form.file_field :image %>
-
-              <%= images_form.label :subtitle %>
-              <%= images_form.text_field :subtitle %>
-            <% end %>
+          <ul id="image-forms" data-images="0">
+            <%= render "image_form", f: f %>
           </ul>
+
+          <%= link_to "Add another picture", add_image_path, remote: true %>
+
           <%= f.submit "Create Memorial" %>
         <% end %>
       </div>

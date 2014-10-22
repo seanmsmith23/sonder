@@ -17,12 +17,7 @@ class ImagesController < ApplicationController
   def update
     image = Image.find(params[:id])
 
-    if crop_params_present?
-      assign_crop_values(image)
-      image.crop_image
-    else
-      image.update(allowed_params)
-    end
+    image.update(allowed_params)
 
     redirect_to memorial_path(params[:memorial_id])
   end
@@ -33,21 +28,16 @@ class ImagesController < ApplicationController
     redirect_to memorial_path(params[:memorial_id])
   end
 
+  def add
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
   def allowed_params
-    permit(:image).require(:subtitle, :memorial_id, :user_id, :image)
-  end
-
-  def crop_params_present?
-    params[:image][:crop_x]
-  end
-
-  def assign_crop_values(image)
-    image.crop_x = params[:image][:crop_x]
-    image.crop_y = params[:image][:crop_y]
-    image.crop_w = params[:image][:crop_w]
-    image.crop_h = params[:image][:crop_h]
+    params.require(:image).permit(:subtitle, :memorial_id, :user_id, :image)
   end
 
 end

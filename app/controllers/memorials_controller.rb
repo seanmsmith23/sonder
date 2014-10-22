@@ -22,15 +22,16 @@ class MemorialsController < ApplicationController
     @memorial = Memorial.new(name: params[:memorial][:name], born: born, died: died, user_id: current_user.id)
 
     if @memorial.save
-      @images = params[:memorial][:images_attributes].map do |key, value|
-        Image.new(user_id: current_user.id, memorial_id: @memorial.id, background: true, subtitle: value[:subtitle], image: value[:image])
-      end
+      @images = images_from_params
+      Membership.create!(memorial: @memorial, user: current_user)
+
       if all_images_save?(@images)
-        render :crop
+        redirect_to new_memorial_crop_path(@memorial.id)
       else
         1.times { @memorial.images.build }
         render :new
       end
+
     else
       1.times { @memorial.images.build }
       render :new
@@ -82,6 +83,12 @@ class MemorialsController < ApplicationController
 
   def parse_date(type)
     Date.strptime(params[:memorial][type], "%m/%d/%Y")
+  end
+
+  def images_from_params
+    params[:memorial][:images_attributes].map do |key, value|
+      Image.new(user_id: current_user.id, memorial_id: @memorial.id, background: true, subtitle: value[:subtitle], image: value[:image])
+    end
   end
 
 end

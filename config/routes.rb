@@ -10,7 +10,10 @@ Rails.application.routes.draw do
     resources :stories, only: [:create, :destroy, :edit, :update]
     resources :posts, only: [:create, :destroy, :edit, :update]
     resources :images, only: [:create, :destroy, :edit, :update]
+    resources :crop, only: [:new, :update]
   end
+
+  get "/memorials/new/add_image" => "images#add", as: :add_image
 
   resources :likes, only: [:create]
   resource :likes, only: [:destroy]

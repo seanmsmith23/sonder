@@ -1,0 +1,6 @@
+var form = $('#image-forms');
+
+var num = (parseInt(form.attr('data-images')) + 1);
+form.attr('data-images', num);
+
+form.append("<li><label for='memorial_images_attributes_" + num + "_image'>Image</label><input id='memorial_images_attributes_" + num + "_image' name='memorial[images_attributes][" + num + "][image]' type='file'><label for='memorial_images_attributes_" + num + "_subtitle'>Subtitle</label><input id='memorial_images_attributes_" + num + "_subtitle' name='memorial[images_attributes][" + num + "][subtitle]' type='text'></li>");
