@@ -9,9 +9,7 @@ and web technologies to improve online memorials.
 
 Fork/clone the project and run `bundle`.
 Run:
- `rake db:create
- rake db:migrate
- rake db:seed`
+ `rake db:create db:migrate db:seed`
 
 Then you can either use the example login that prints to the console (from seed file)
 or create a new user and login.
