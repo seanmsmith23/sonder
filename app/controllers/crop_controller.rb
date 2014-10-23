@@ -13,7 +13,8 @@ class CropController < ApplicationController
       image.update(allowed_params)
     end
 
-    redirect_to memorial_path(params[:memorial_id])
+    render nothing: true
+    # render js: "window.location = '#{memorial_path(params[:memorial_id])}'"
   end
 
   private

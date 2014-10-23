@@ -1,15 +1,17 @@
 <% @images.each do |image| %>
-  <%= image_tag image.image, id: "cropbox" %>
+  <div data-image-id="<%= image.id %>" data-memorial-id="<%= image.memorial.id %>" class="crop-image-container">
+    <%= image_tag image.image, class: "cropbox" %>
 
-  <%= form_for image, url: memorial_crop_path(memorial_id: image.memorial.id, id: image.id) do |f| %>
-    <div class="actions">
-      <% %w[x y w h].each do |attribute| %>
-        <%= f.hidden_field "crop_#{attribute}"%>
-      <% end %>
-      <%= f.submit "Crop" %>
-    </div>
-  <% end %>
+    <%= form_for image, url: memorial_crop_path(memorial_id: image.memorial.id, id: image.id) do |f| %>
+      <div class="actions">
+        <% %w[x y w h].each do |attribute| %>
+          <%= f.hidden_field "crop_#{attribute}" %>
+        <% end %>
+        <%= f.submit "Crop", class: "crop-button" %>
+      </div>
+    <% end %>
+  </div>
 
-<% end  %>
+<% end %>
 
-<button id="hello">hi</button>
+<%= link_to "Finished", memorial_path(@images.first.memorial.id) %>

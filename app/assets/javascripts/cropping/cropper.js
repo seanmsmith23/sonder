@@ -14,7 +14,7 @@ $(document).ready(function(){
   AvatarCropper = (function() {
     function AvatarCropper() {
       this.update = __bind(this.update, this);
-      $('#cropbox').Jcrop({
+      $('.cropbox').Jcrop({
         aspectRatio: (16/10),
         onSelect: this.update,
         onChange: this.update

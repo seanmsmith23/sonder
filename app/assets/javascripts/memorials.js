@@ -65,9 +65,9 @@ $(document).ready(function(){
 
   var carousel = new Carousel(links, imageDisplay);
 
-  window.setInterval(function(){
-    carousel.advanceCarousel();
-  }, 10000);
+//  window.setInterval(function(){
+//    carousel.advanceCarousel();
+//  }, 10000);
 
   $('.previous-image').click(function(){
     console.log("PREVIOUS IMAGE CLICKED");
