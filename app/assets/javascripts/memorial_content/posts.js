@@ -9,4 +9,5 @@ $(document).ready(function(){
   postInputField.bind('keyup', function(){
     checkCharCount(postInputField, maxPostLength, charCounter, addPostButton);
   });
+
 });
