@@ -1,5 +1,7 @@
 ## Welcome to Sonder
 
+[![Code Climate](https://codeclimate.com/github/seanmsmith23/sonder/badges/gpa.svg)](https://codeclimate.com/github/seanmsmith23/sonder)
+
 Sonder is my personal project for gSchool. The goal of the project is to use modern design
 and web technologies to improve online memorials.
 
