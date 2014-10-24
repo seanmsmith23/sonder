@@ -24,10 +24,10 @@
       </li>
       <% if story.user.id == current_user.id %>
         <div class="crud-actions">
-          <li>
+          <li class="delete-card">
             <%= link_to "Delete", memorial_story_path(memorial_id: story.memorial.id, id: story.id), method: :delete %>
           </li>
-          <li>
+          <li class="edit-card">
             <%= link_to "Edit", edit_memorial_story_path(memorial_id: story.memorial.id, id: story.id) %>
           </li>
         </div>

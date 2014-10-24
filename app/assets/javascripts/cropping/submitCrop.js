@@ -10,8 +10,6 @@ $(document).ready(function(){
 
     var cropImageContainer = $(this).parents('.crop-image-container');
 
-    debugger;
-
     var imageId = cropImageContainer.attr('data-image-id');
     var memorialId = cropImageContainer.attr('data-memorial-id');
 
