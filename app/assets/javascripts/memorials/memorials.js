@@ -60,22 +60,27 @@ $(document).ready(function(){
 
 //  CAROUSEL
 
+  var advanceAtIntervals = function(carousel, intervalSeconds){
+    window.setInterval(function(){
+      carousel.advanceCarousel();
+    }, intervalSeconds * 1000);
+  };
+
   var links = $('.image-string');
   var imageDisplay = $('.memorial-cover-photo');
 
   var carousel = new Carousel(links, imageDisplay);
 
-//  window.setInterval(function(){
-//    carousel.advanceCarousel();
-//  }, 10000);
+  if (links.length > 0){
+    carousel.advanceCarousel();
+    advanceAtIntervals(carousel, 9);
+  }
 
   $('.previous-image').click(function(){
-    console.log("PREVIOUS IMAGE CLICKED");
     carousel.reverseCarousel();
   });
 
   $('.next-image').click(function(){
-    console.log("NEXT IMAGE CLICKED");
     carousel.advanceCarousel();
   });
 
