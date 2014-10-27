@@ -1,5 +1,4 @@
 require 'rails_helper'
-require_relative '../helper_methods'
 
 feature "Welcome" do
   scenario 'User should see a registration form and a button for signin' do

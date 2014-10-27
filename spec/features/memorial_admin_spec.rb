@@ -1,5 +1,4 @@
 require 'rails_helper'
-require_relative '../helper_methods'
 
 feature "Create a Memorial" do
   scenario "User can create a memorial and see it on their homepage" do
