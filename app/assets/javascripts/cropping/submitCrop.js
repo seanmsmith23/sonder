@@ -28,10 +28,10 @@ $(document).ready(function(){
       url: url,
       data: params,
       success: function(){
-        alert("YAAAAY");
+        console.log("CROPPED SUCCESSFULLY")
       },
       errors: function(){
-        alert("NOOOOO");
+        console.log("CROPPING FAILED")
       }
     })
   });
