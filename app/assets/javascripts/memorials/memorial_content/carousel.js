@@ -47,6 +47,4 @@ Carousel.prototype.displayCurrentImage = function(){
   var link = "http://localhost:3000" + imageString;
 
   this.imageDisplay.css('background-image', "url(" + link + ")");
-
-  console.log("IMAGE DISPLAYED: " + this.currentImage);
 };
