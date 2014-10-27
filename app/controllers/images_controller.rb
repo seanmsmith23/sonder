@@ -7,7 +7,6 @@ class ImagesController < ApplicationController
     else
       render 'memorials/show'
     end
-
   end
 
   def edit
@@ -37,7 +36,7 @@ class ImagesController < ApplicationController
   private
 
   def allowed_params
-    params.require(:image).permit(:subtitle, :memorial_id, :user_id, :image)
+    params.require(:image).permit(:subtitle, :image).merge(user_id: current_user.id, memorial_id: params[:memorial_id])
   end
 
 end
