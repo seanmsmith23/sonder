@@ -10,30 +10,25 @@ class MemorialsController < ApplicationController
   end
 
   def create
-
-    if dates_present?
-      born = parse_date(:born)
-      died = parse_date(:died)
-    else
-      born = ""
-      died = ""
-    end
+    date_present?(:born) ? born = parse_date(:born) : born = ""
+    date_present?(:died) ? died = parse_date(:died) : died = ""
 
     @memorial = Memorial.new(name: params[:memorial][:name], born: born, died: died, user_id: current_user.id)
 
     if @memorial.save
-      @images = images_from_params
+      # @images = images_from_params
       Membership.create!(memorial: @memorial, user: current_user)
+      redirect_to new_memorial_image_path(@memorial)
 
-      if all_images_save?(@images)
-        redirect_to new_memorial_crop_path(@memorial.id)
-      else
-        1.times { @memorial.images.build }
-        render :new
-      end
+      # if all_images_save?(@images)
+      #   redirect_to new_memorial_crop_path(@memorial.id)
+      # else
+      #   @images
+      #   render :new
+      # end
 
     else
-      1.times { @memorial.images.build }
+      # 1.times { @memorial.images.build }
       render :new
     end
   end
@@ -64,31 +59,31 @@ class MemorialsController < ApplicationController
     end
   end
 
-  def all_images_save?(images)
-    result = true
-    images.each do |image|
-      if image.save
-        result = true
-      else
-        result = false
-        break
-      end
-    end
-    result
-  end
+  # def all_images_save?(images)
+  #   result = true
+  #   images.each do |image|
+  #     if image.save
+  #       result = true
+  #     else
+  #       result = false
+  #       break
+  #     end
+  #   end
+  #   result
+  # end
 
-  def dates_present?
-    params[:memorial][:born].present? && params[:memorial][:died].present?
+  def date_present?(type)
+    params[:memorial][type].present?
   end
 
   def parse_date(type)
     Date.strptime(params[:memorial][type], "%m/%d/%Y")
   end
 
-  def images_from_params
-    params[:memorial][:images_attributes].map do |key, value|
-      Image.new(user_id: current_user.id, memorial_id: @memorial.id, background: true, subtitle: value[:subtitle], image: value[:image])
-    end
-  end
+  # def images_from_params
+  #   params[:memorial][:images_attributes].map do |key, value|
+  #     Image.new(user_id: current_user.id, memorial_id: @memorial.id, background: true, subtitle: value[:subtitle], image: value[:image])
+  #   end
+  # end
 
 end

@@ -1,9 +1,11 @@
-<%= form_for @memorial_page.new_image, url: memorial_images_path(memorial_id: @memorial_page.memorial.id), html: {multipart: true} do |f| %>
-  <%= f.label :image %>
-  <%= f.file_field :image %>
+<div id="user-add-image-form">
+  <%= form_for @memorial_page.new_image, url: memorial_images_path(memorial_id: @memorial_page.memorial.id), html: {multipart: true} do |f| %>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
 
-  <%= f.label :subtitle %>
-  <%= f.text_field :subtitle %>
+    <%= f.label :subtitle %>
+    <%= f.text_field :subtitle %>
 
-  <%= f.submit "Add Image", id: "add-image-button" %>
-<% end %>
+    <%= f.submit "Add Image", id: "add-image-button" %>
+  <% end %>
+</div>

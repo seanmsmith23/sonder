@@ -8,7 +8,7 @@ $(document).ready(function(){
   var newPostForm = $('.new_post');
   var newPostButton = $('#new-post-button');
 
-  var newImageForm = $('.new_image');
+  var newImageForm = $('#user-add-image-form');
   var newImageButton = $('#new-image-button');
 
   var hideForms = function(){

@@ -1,0 +1,13 @@
+<%= form_for @image, url: memorial_images_path(memorial_id: @image.memorial_id) do |f| %>
+  <%= f.label :image %>
+  <%= f.file_field :image %>
+
+  <%= f.label :subtitle %>
+  <%= f.text_field :subtitle %>
+
+  <%= f.hidden_field :background %>
+
+  <%= f.submit %>
+<% end %>
+
+<%= link_to "Finished Adding Images", new_memorial_crop_path(@image.memorial_id) %>

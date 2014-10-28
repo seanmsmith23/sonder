@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :memberships, only: [:new, :create]
     resources :stories, only: [:create, :destroy, :edit, :update]
     resources :posts, only: [:create, :destroy, :edit, :update]
-    resources :images, only: [:create, :destroy, :edit, :update]
+    resources :images, only: [:create, :destroy, :edit, :update, :new]
     resources :crop, only: [:new, :update]
   end
 

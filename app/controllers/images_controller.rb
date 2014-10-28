@@ -1,9 +1,17 @@
 class ImagesController < ApplicationController
+  def new
+    @image = Image.new(memorial_id: params[:memorial_id], background: true, user_id: current_user)
+  end
+
   def create
     @image = Image.create(allowed_params)
 
     if @image.save
-      redirect_to memorial_path(params[:memorial_id])
+      if @image.is_background?
+        redirect_to new_memorial_image_path(params[:memorial_id])
+      else
+        redirect_to memorial_path(params[:memorial_id])
+      end
     else
       render 'memorials/show'
     end
@@ -36,7 +44,7 @@ class ImagesController < ApplicationController
   private
 
   def allowed_params
-    params.require(:image).permit(:subtitle, :image).merge(user_id: current_user.id, memorial_id: params[:memorial_id])
+    params.require(:image).permit(:subtitle, :image, :background).merge(user_id: current_user.id, memorial_id: params[:memorial_id])
   end
 
 end

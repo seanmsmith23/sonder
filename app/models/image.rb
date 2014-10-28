@@ -13,4 +13,8 @@ class Image < ActiveRecord::Base
     image.recreate_versions! if crop_x.present?
   end
 
+  def is_background?
+    background
+  end
+
 end
