@@ -6,5 +6,4 @@ module MemorialsHelper
   def user_is_creator?(creator)
     creator.id == current_user.id
   end
-
 end
