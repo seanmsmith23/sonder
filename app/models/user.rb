@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
   def name
     "#{first_name.capitalize} #{last_name.capitalize}"
   end
+
+  def is_administrator?(memorial)
+    Administrator.where(memorial_id: memorial.id, user_id: id).count == 1
+  end
 end
