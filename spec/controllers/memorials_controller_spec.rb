@@ -16,7 +16,17 @@ describe MemorialsController do
       expect(Administrator.all.count).to eq(1)
       expect(Administrator.first.id).to eq(user.id)
     end
+
+    it "should create a membership for the user" do
+      expect(Membership.all.count).to eq(0)
+
+      post :create, {memorial: {name: "Abe Lincoln", born: "10/01/2014", died: "10/05/2014"}}
+
+      expect(Membership.all.count).to eq(1)
+      expect(Membership.first.id).to eq(user.id)
+    end
   end
+
 
 
 end
