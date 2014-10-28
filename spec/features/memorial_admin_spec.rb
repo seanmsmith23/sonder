@@ -28,4 +28,28 @@ feature "Create a Memorial" do
     expect(page).to have_content(memorial.name)
     expect(page).to have_button("Story")
   end
+
+  scenario "Admin users can delete any content", js: true do
+    user1 = create_user
+    user2 = create_user
+    memorial = create_memorial(user_id: user1.id)
+    story = create_story(user_id: user2.id, memorial_id: memorial.id)
+    create_membership(user1, memorial)
+    create_admin(user1, memorial)
+    sign_in(user1)
+    visit_memorial(memorial)
+
+    expect(page).to have_content(story.story)
+    expect(page).to have_content(user2.name)
+    expect(page).to_not have_content(user1.name)
+
+    expect(page).to have_link("Delete")
+
+    click_link("Delete")
+
+    expect(page).to_not have_content(story.story)
+    expect(page).to_not have_content(story.story)
+  end
+
 end
+

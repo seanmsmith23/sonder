@@ -50,3 +50,7 @@ end
 def signout
   visit '/signout'
 end
+
+def create_admin(user, memorial)
+  Administrator.create(user_id: user.id, memorial_id: memorial.id)
+end

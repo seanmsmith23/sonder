@@ -49,7 +49,6 @@ class MemorialsController < ApplicationController
     end
   end
 
-
   def date_present?(type)
     params[:memorial][type].present?
   end

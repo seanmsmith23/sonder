@@ -36,14 +36,16 @@
       <% end %>
       </li>
       <li class="like-count" data-likes="<%= image.likes.count %>"><%= image.likes.count %></li>
-      <% if image.user.id == current_user.id %>
+      <% if user_is_creator_or_admin?(image.user, image.memorial) %>
         <div class="crud-actions">
           <li class="delete-card">
             <%= link_to "Delete", memorial_image_path(memorial_id: image.memorial.id, id: image.id), method: :delete %>
           </li>
-          <li class="edit-card">
-            <%= link_to "Edit", edit_memorial_image_path(memorial_id: image.memorial.id, id: image.id) %>
-          </li>
+          <% if user_is_creator?(image.user) %>
+            <li class="edit-card">
+              <%= link_to "Edit", edit_memorial_image_path(memorial_id: image.memorial.id, id: image.id) %>
+            </li>
+          <% end %>
         </div>
       <% end %>
     </ul>
