@@ -24,7 +24,8 @@ class MemorialsController < ApplicationController
   end
 
   def show
-    check_user_membership(params[:id], current_user.id)
+    memorial = Memorial.find(params[:id])
+    check_user_permissions(memorial)
     @images = Image.all
     @memorial_page = MemorialPage.new(params[:id])
   end
@@ -43,9 +44,11 @@ class MemorialsController < ApplicationController
 
   private
 
-  def check_user_membership(memorial_id, user_id)
-    unless Memorial.find(memorial_id).users.find_by_id(user_id)
-      redirect_to new_memorial_membership_path(memorial_id: memorial_id)
+  def check_user_permissions(memorial)
+    if current_user.has_not_joined_memorial?(memorial)
+      redirect_to new_memorial_membership_path(memorial_id: memorial.id)
+    elsif current_user.is_blocked?(memorial)
+      redirect_to root_path
     end
   end
 

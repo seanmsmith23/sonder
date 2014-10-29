@@ -27,6 +27,4 @@ describe MemorialsController do
     end
   end
 
-
-
 end

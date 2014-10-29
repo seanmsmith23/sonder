@@ -22,18 +22,23 @@
       <li class="like-count" data-likes="<%= story.likes.count %>">
         <%= story.likes.count %>
       </li>
-      <% if user_is_creator_or_admin?(story.user, story.memorial) %>
-        <div class="crud-actions">
+      <div class="crud-actions">
+        <% if user_is_creator_or_admin?(story.user, story.memorial) %>
           <li class="delete-card">
             <%= link_to "Delete", memorial_story_path(memorial_id: story.memorial.id, id: story.id), method: :delete %>
           </li>
-          <% if user_is_creator?(story.user) %>
-            <li class="edit-card">
-              <%= link_to "Edit", edit_memorial_story_path(memorial_id: story.memorial.id, id: story.id) %>
-            </li>
-          <% end %>
-        </div>
-      <% end %>
+        <% end %>
+        <% if user_is_admin_not_creator?(story.memorial, story.user) %>
+          <li class="ban-user">
+            <%= link_to "Ban User", memorial_user_permission_path(memorial_id: story.memorial.id, id: story.user.id), method: :patch %>
+          </li>
+        <% end %>
+        <% if user_is_creator?(story.user) %>
+          <li class="edit-card">
+            <%= link_to "Edit", edit_memorial_story_path(memorial_id: story.memorial.id, id: story.id) %>
+          </li>
+        <% end %>
+      </div>
     </ul>
   </div>
 </div>

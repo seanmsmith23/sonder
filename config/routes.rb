@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:create, :destroy, :edit, :update]
     resources :images, only: [:create, :destroy, :edit, :update, :new]
     resources :crop, only: [:new, :update]
+    resources :user_permissions, only: [:update]
   end
 
   get "/memorials/new/add_image" => "images#add", as: :add_image
