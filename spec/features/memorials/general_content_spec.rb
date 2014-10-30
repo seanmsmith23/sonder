@@ -13,6 +13,7 @@ feature "Content" do
   scenario "User should be able to delete posts they created", js: true do
     user2 = create_user
     story1 = create_story(user_id: user2.id, memorial_id: memorial.id)
+    create_membership(user2, memorial)
 
     visit_memorial(memorial)
 
@@ -21,7 +22,7 @@ feature "Content" do
       expect(page).to_not have_link("Delete")
     end
 
-    Story.find(story1.id).destroy
+    story1.destroy
     story2 = create_story(user_id: user.id, memorial_id: memorial.id, story: "Another story")
     visit_memorial(memorial)
 
@@ -38,6 +39,7 @@ feature "Content" do
   scenario "User should be able to delete posts they created", js: true do
     user2 = create_user
     post1 = create_post(user_id: user2.id, memorial_id: memorial.id)
+    create_membership(user2, memorial)
 
     visit_memorial(memorial)
 
@@ -46,7 +48,7 @@ feature "Content" do
       expect(page).to_not have_link("Delete")
     end
 
-    Post.find(post1.id).destroy
+    post1.destroy
     post2 = create_post(user_id: user.id, memorial_id: memorial.id, title: "Another post")
     visit_memorial(memorial)
 
@@ -63,6 +65,7 @@ feature "Content" do
   scenario "User should be able to edit stories they created", js: true do
     user2 = create_user
     story1 = create_story(user_id: user2.id, memorial_id: memorial.id)
+    create_membership(user2, memorial)
 
     visit_memorial(memorial)
 
@@ -71,7 +74,7 @@ feature "Content" do
       expect(page).to_not have_link("Edit")
     end
 
-    Story.find(story1.id).destroy
+    story1.destroy
     story2 = create_story(user_id: user.id, memorial_id: memorial.id, story: "Another story")
     visit_memorial(memorial)
 

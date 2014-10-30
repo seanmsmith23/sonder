@@ -12,4 +12,8 @@ class Membership < ActiveRecord::Base
     end
   end
 
+  def self.banned_users(memorial_id)
+    where(memorial_id: memorial_id, permission: false)
+  end
+
 end

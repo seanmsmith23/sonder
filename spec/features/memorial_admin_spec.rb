@@ -35,6 +35,7 @@ feature "Create a Memorial" do
     memorial = create_memorial(user_id: user1.id)
     story = create_story(user_id: user2.id, memorial_id: memorial.id)
     create_membership(user1, memorial)
+    create_membership(user2, memorial)
     create_admin(user1, memorial)
     sign_in(user1)
     visit_memorial(memorial)
@@ -49,6 +50,28 @@ feature "Create a Memorial" do
 
     expect(page).to_not have_content(story.story)
     expect(page).to_not have_content(story.story)
+  end
+
+  scenario "Admin user can ban other users and there content will disappear", js: true do
+    user1 = create_user
+    user2 = create_user
+    memorial = create_memorial(user_id: user1.id)
+    story = create_story(user_id: user2.id, memorial_id: memorial.id)
+    create_membership(user1, memorial)
+    create_membership(user2, memorial)
+    create_admin(user1, memorial)
+    sign_in(user1)
+    visit_memorial(memorial)
+
+    expect(page).to have_link("Ban User")
+    expect(page).to have_content(story.story)
+    expect(page).to have_content(user2.name)
+
+    click_link("Ban User")
+
+    expect(page).to_not have_content(story.story)
+    expect(page).to_not have_content(user2.name)
+
   end
 
 end

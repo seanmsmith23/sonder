@@ -18,10 +18,10 @@
     </p>
   </div>
 
-  <% #if @memorial_page.carousel_images.count > 1 %>
+  <% if @memorial_page.carousel_images.count > 1 %>
     <%= image_tag "left-arrow.png", class: "next-image" %>
     <%= image_tag "right-arrow.png", class: "previous-image" %>
-  <% #end %>
+  <% end %>
 
   <div class="full-width">
     <div class="memorial-content">
@@ -39,9 +39,9 @@
       <%= render 'memorials/content_forms/new_image' %>
 
       <div class="columns-container">
-        <%= render partial: "memorials/cards/image_card", collection: @memorial_page.images, as: :image %>
-        <%= render partial: "memorials/cards/post_card", collection: @memorial_page.memorial.posts, as: :post %>
-        <%= render partial: "memorials/cards/story_card", collection: @memorial_page.memorial.stories, as: :story %>
+        <%= render partial: "memorials/cards/image_card", collection: @memorial_page.memorial.allowed_images, as: :image %>
+        <%= render partial: "memorials/cards/post_card", collection: @memorial_page.memorial.allowed_posts, as: :post %>
+        <%= render partial: "memorials/cards/story_card", collection: @memorial_page.memorial.allowed_stories, as: :story %>
       </div>
     </div>
   </div>
