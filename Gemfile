@@ -12,6 +12,10 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'pg'
 gem 'rails_12factor'
+gem 'dotenv-rails'
+gem 'fog'
+gem 'carrierwave_direct'
+gem 'sidekiq'
 
 group :test, :development do
   gem 'selenium-webdriver'
