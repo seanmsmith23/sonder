@@ -25,7 +25,7 @@ class Memorial < ActiveRecord::Base
   private
 
   def allowed_content_query(content_table, options="")
-    "INNER JOIN memberships ON #{content_table}.user_id = memberships.user_id AND #{content_table}.memorial_id = memberships.memorial_id WHERE memberships.permission = true#{options}"
+    "INNER JOIN memberships ON #{content_table}.user_id = memberships.user_id AND #{content_table}.memorial_id = memberships.memorial_id WHERE memberships.permission = true AND #{content_table}.memorial_id = #{id}#{options}"
   end
 
 end
