@@ -36,15 +36,13 @@ Carousel.prototype.previousImage = function(){
 };
 
 Carousel.prototype.displaySingleImage = function(){
-  var imageString = this.links.html();
-  var link = "http://localhost:3000" + imageString;
+  var link = this.links.html();
 
   this.imageDisplay.css('background-image', "url(" + link + ")");
 };
 
 Carousel.prototype.displayCurrentImage = function(){
-  var imageString = $(this.links[this.currentImage]).html();
-  var link = "http://localhost:3000" + imageString;
+  var link = $(this.links[this.currentImage]).html();
 
   this.imageDisplay.css('background-image', "url(" + link + ")");
 };
