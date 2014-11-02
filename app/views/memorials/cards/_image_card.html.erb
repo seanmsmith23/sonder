@@ -24,7 +24,7 @@
   </div>
   <div class="card-stats">
     <ul>
-      <% if image.likes.count > 0 %>
+      <% if image.likes.count > 0 && image.likes.any?{|like| like.user_id == current_user.id}%>
         <li id="liked">
       <% else %>
         <li>
