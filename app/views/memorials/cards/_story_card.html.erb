@@ -7,7 +7,7 @@
   </div>
   <div class="card-stats">
     <ul>
-      <% if story.likes.count > 0 && image.likes.any?{|like| like.user_id == current_user.id} %>
+      <% if story.likes.count > 0 && story.likes.any?{|like| like.user_id == current_user.id} %>
         <li id="liked">
       <% else %>
         <li>
