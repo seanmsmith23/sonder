@@ -4,7 +4,7 @@ class StoriesController < ApplicationController
     if @story.save
       redirect_to memorial_path(id: params[:memorial_id])
     else
-      @memorial = Memorial.find(params[:memorial_id])
+      @memorial_page = MemorialPage.new(params[:memorial_id])
       render 'memorials/show'
     end
   end

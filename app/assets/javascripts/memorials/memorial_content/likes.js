@@ -74,7 +74,7 @@ $(document).ready(function(){
         $('<li></li>').html('1').addClass('like-count').insertBefore(deleteOption);
         $(this).parents('.card').attr('data-like-count','1');
       } else {
-        console.log("DOESNT CONTAIN DELETE")
+        console.log("DOESNT CONTAIN DELETE");
         $(this).parents('ul').append($('<li></li>').html('1').addClass('like-count'));
         $(this).parents('.card').attr('data-like-count','1');
       }

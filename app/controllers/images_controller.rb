@@ -13,6 +13,7 @@ class ImagesController < ApplicationController
         redirect_to memorial_path(params[:memorial_id])
       end
     else
+      @memorial_page = MemorialPage.new(params[:memorial_id])
       render 'memorials/show'
     end
   end

@@ -4,6 +4,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to memorial_path(id: params[:memorial_id])
     else
+      @memorial_page = MemorialPage.new(params[:memorial_id])
       render 'memorials/show'
     end
   end
