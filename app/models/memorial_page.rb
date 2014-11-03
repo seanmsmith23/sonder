@@ -5,9 +5,6 @@ class MemorialPage
   def initialize(memorial_id)
     @memorial_id = memorial_id
     @memorial = Memorial.find(@memorial_id)
-    @story = Story.new
-    @post = Post.new
-    @image = Image.new
   end
 
   def content
@@ -15,15 +12,15 @@ class MemorialPage
   end
 
   def new_story
-    @story
+    @story = Story.new
   end
 
   def new_post
-    @post
+    @post = Post.new
   end
 
   def new_image
-    @image
+    @image = Image.new
   end
 
   def carousel_images
