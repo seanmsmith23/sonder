@@ -6,4 +6,9 @@ class Post < ActiveRecord::Base
 
   validates :title, :content, presence: true
   validates :content, length: {maximum: 2000}
+
+  def type
+    "posts"
+  end
+
 end

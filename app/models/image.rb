@@ -17,4 +17,8 @@ class Image < ActiveRecord::Base
     background
   end
 
+  def type
+    "images"
+  end
+
 end

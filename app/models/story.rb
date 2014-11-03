@@ -7,4 +7,8 @@ class Story < ActiveRecord::Base
   validates :story, presence: true
   validates :story, length: {maximum: 500}
 
+  def type
+    "stories"
+  end
+
 end

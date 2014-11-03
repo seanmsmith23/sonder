@@ -22,38 +22,5 @@
     </div>
 
   </div>
-  <div class="card-stats">
-    <ul>
-      <% if image.likes.count > 0 && image.likes.any?{|like| like.user_id == current_user.id}%>
-        <li id="liked">
-      <% else %>
-        <li>
-      <% end %>
-      <%= form_tag do %>
-        <%= image_submit_tag("heart-plus-icon-red.png", class: "unlike") %>
-      <% end %>
-      <%= form_tag do %>
-        <%= image_submit_tag("heart-plus-icon.png", class: "favorite") %>
-      <% end %>
-      </li>
-      <li class="like-count" data-likes="<%= image.likes.count %>"><%= image.likes.count %></li>
-      <div class="crud-actions">
-        <% if user_is_creator_or_admin?(image.user, image.memorial) %>
-          <li class="delete-card">
-            <%= link_to "Delete", memorial_image_path(memorial_id: image.memorial.id, id: image.id), method: :delete %>
-          </li>
-        <% end %>
-        <% if user_is_admin_not_creator?(image.memorial, image.user) %>
-          <li class="ban-user">
-            <%= link_to "Ban User", memorial_user_permission_path(memorial_id: image.memorial.id, id: image.user.id), method: :patch  %>
-          </li>
-        <% end %>
-        <% if user_is_creator?(image.user) %>
-          <li class="edit-card">
-            <%= link_to "Edit", edit_memorial_image_path(memorial_id: image.memorial.id, id: image.id) %>
-          </li>
-        <% end %>
-      </div>
-    </ul>
-  </div>
+  <%= render partial: "memorials/cards/stats", locals: {content: image} %>
 </div>
